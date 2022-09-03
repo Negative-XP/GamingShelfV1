@@ -2,23 +2,26 @@
 
 h1{
     color: white;
-    font-size: largest;
+    font-size: 2em;
     
 }
 
+
 body{
-    background-color: rgb(40, 40, 48)}
+    background-color: rgb(40, 40, 48);
+    background-image: url('/Assets/Pictures/kindpng_1133195.png');
 }
 
 a:link {
     color: white;
     background-color: transparent;
     text-decoration: none;
+    font-size: 1.3em;
   }
   
   a:visited {
     color: white;
-    background-color: transparent;
+    background-color: transparent;  
     text-decoration: none;
   }
   
@@ -49,6 +52,7 @@ a:link {
    width: 100%; 
    float: left; 
    text-align: center;
+
 }
 
 .loginPanel{
