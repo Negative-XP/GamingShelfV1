@@ -9,28 +9,32 @@
 </head>
 <body>
     <header>
-        <section class="headerTitle"><span class="site">My Favorite Movies</span></section>
-        <section class="headerUser"><a href="/profile" class="profileButton"><%= user.userName %></a></section>
+        <section class="headerWrapper">
+            <span class="logo"><a href="/">MFM</a></span>
+            <h1>My Favorite Movies</h1>
+            <span class="logout"><a href="/logout">Logout</a></span>
+        </section>
     </header>
-    <h1>Todos</h1>
-    <ul>
-    <% todos.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class='del'> Delete </span>
-            </li>
-    <% }) %>    
-    </ul>
+    <section class="wrapper">
+      <h2>Hello <%= user.userName %>, please search for a movie to add to your favorites.</h2>
+      <input class="movieName" type="text" placeholder="Movie Name">
+      <input type="submit" class="movieSubmit">
+        
+      <section class="searchResults"></section>
 
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
-
-    <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+      <form action="/todos/createTodo" method='POST'>
+        <input type="text" placeholder="Add Movie" name='todoItem'>
         <input type="submit">
     </form>
-
-    <a href="/logout">Logout</a>
-
+    <ul>
+    <% todos.forEach( el => { %>
+        <li class='todoItem' data-id='<%=el._id%>'>
+            <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+            <span class='del'> Delete </span>
+        </li>
+    <% }) %>    
+    </ul>  
+    </section>
     <script src="js/main.js"></script>
 </body>
 </html>

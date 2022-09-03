@@ -1,60 +1,95 @@
 /* CSS FOR HTML ELEMENTS */
 
-h1{
-    color: white;
-    font-size: 2em;
-    margin: 0%;
+body {
+  background-color: rgb(40, 40, 48);
+  background-image: url('/Assets/Pictures/kindpng_1133195.png');
+  padding: 0;
+  margin: 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-
-body{
-    background-color: rgb(40, 40, 48);
-    background-image: url('/Assets/Pictures/kindpng_1133195.png');
-    padding: 0;
-    margin: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+h1 {
+  color: white;
+  font-size: 2em;
+  margin: 0;
 }
 
 a:link {
-    color: white;
-    background-color: transparent;
-    text-decoration: none;
-    font-size: 1.3em;
-  }
-  
-  a:visited {
-    color: white;
-    background-color: transparent;  
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: beige;
-    background-color: transparent;
-    text-decoration: underline;
-  }
-  
-  a:active {
-    color: white;
-    background-color: transparent;
-    text-decoration: underline;
-  } 
-
-
-
-
-header{
-  width: 100%; 
-  float: left; 
-  height: 3.5em;
-  margin: 0% 0% 5% 0%;;
- background-color:  rgb(31, 31, 37);
- text-align: center;
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 1.3em;
 }
 
-input{
-  margin: .75em;
-  background-color: rgb(31, 31, 37) ;
+a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: beige;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: white;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+/* Wrappers */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.headerWrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Header Styles */
+header {
+  background-color: rgb(31, 31, 37);
+  height: 6rem;
+  width: 100%;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.centerIndex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  display: inline-block;
+  background-color: beige;
+  line-height: 75px;
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+}
+
+.logo a {
+  color: black;
+  font-weight: bold;
+}
+
+/* Form Styles */
+input {
+  margin: 0.75em;
+  background-color: rgb(31, 31, 37);
   text-decoration: none;
   border: 1px rgb(31, 31, 37);
   border-radius: 30px;
@@ -65,54 +100,52 @@ input{
 
 /* COLOR FOR CLASS ELEMENTS */
 
-.headerTitle{
+/* .headerTitle {
   width: 80%;
- display: inline;
+  display: inline;
   text-align: left;
   color: white;
   font-size: largest;
 }
-.headerUser{
+
+.headerUser {
   width: 20%;
   display: inline-block;
   text-align: right;
 }
 
-
-.completed{
-    text-decoration: line-through;
-    color: gray;
+.completed {
+  text-decoration: line-through;
+  color: gray;
 }
-.not{
-    text-decoration: underline;
+.not {
+  text-decoration: underline;
+} */
 
-}
-
-.Panel{
-    width: auto; 
-    padding: 5em;
-    height: auto;
-    margin: auto;
-    float: left; 
-    align-items: center;
+.Panel {
+  width: auto;
+  padding: 5em;
+  height: auto;
+  margin: auto;
+  float: left;
+  align-items: center;
   justify-content: center;
-    background-color: rgb(47, 47, 54);
-    color: white;
-    display: flex;
-    border: solid 1px rgb(47, 47, 54) ;
-    border-radius: 5%;
-    flex-direction: column;
+  background-color: rgb(47, 47, 54);
+  color: white;
+  display: flex;
+  border: solid 1px rgb(47, 47, 54);
+  border-radius: 5%;
+  flex-direction: column;
 }
 
-.login{
-    padding: 20px;
-    border-radius: 10px;
-    color: #ffffff;
+.login {
+  padding: 20px;
+  border-radius: 10px;
+  color: #ffffff;
 }
 
-.block{
-    width: 100%;
-    text-align: center;
-    display: flex;
+.block {
+  width: 100%;
+  text-align: center;
+  display: flex;
 }
-
