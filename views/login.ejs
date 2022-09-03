@@ -8,7 +8,12 @@
     <title>Log in!</title>
 </head>
 <body>
-    <% if (locals.messages.errors) { %>
+    <header>
+        <h1>My Favorite Movies</h1>
+    </header>
+    <section class="block">  
+        <section class="Panel">
+<% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
@@ -19,9 +24,12 @@
         <% }) %>    
     <% } %>
     <form action="/login" method="POST">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
+        <input type="email" name="email" placeholder="Email"><br>
+        <input type="password" name="password" placeholder="Password"><br>
         <input type="submit">
     </form>
+</section>
+</section>
+
 </body>
 </html>

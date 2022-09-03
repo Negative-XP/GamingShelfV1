@@ -10,6 +10,9 @@ h1{
 body{
     background-color: rgb(40, 40, 48);
     background-image: url('/Assets/Pictures/kindpng_1133195.png');
+    padding: 0;
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 a:link {
@@ -32,11 +35,32 @@ a:link {
   }
   
   a:active {
-    color: white
+    color: white;
     background-color: transparent;
     text-decoration: underline;
   } 
 
+
+
+
+header{
+  width: 100%; 
+  float: left; 
+  text-align: center;
+  margin: 0% 0% 5% 0%;;
+ background-color:  rgb(31, 31, 37);
+}
+
+input{
+  margin: .75em;
+  background-color: rgb(31, 31, 37) ;
+  text-decoration: none;
+  border: 1px rgb(31, 31, 37);
+  border-radius: 30px;
+  text-align: center;
+  font-size: medium;
+  color: white;
+}
 
 /* COLOR FOR CLASS ELEMENTS */
 .completed{
@@ -48,26 +72,20 @@ a:link {
 
 }
 
-.header{
-   width: 100%; 
-   float: left; 
-   text-align: center;
-
-}
-
-.loginPanel{
-    width: 50%; 
-    height: 15em;
+.Panel{
+    width: auto; 
+    padding: 5em;
+    height: auto;
     margin: auto;
     float: left; 
     align-items: center;
   justify-content: center;
-    background-color: rgb(46, 46, 56);
+    background-color: rgb(47, 47, 54);
     color: white;
     display: flex;
-    border: solid 1px rgb(40, 40, 48) ;
+    border: solid 1px rgb(47, 47, 54) ;
     border-radius: 5%;
-    flex-direction: column
+    flex-direction: column;
 }
 
 .login{
@@ -81,3 +99,4 @@ a:link {
     text-align: center;
     display: flex;
 }
+
