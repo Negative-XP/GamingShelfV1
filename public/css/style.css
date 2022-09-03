@@ -1,10 +1,79 @@
+/* CSS FOR HTML ELEMENTS */
+
 h1{
-    color: red;
+    color: white;
+    font-size: largest;
+    
 }
+
+body{
+    background-color: rgb(40, 40, 48)}
+}
+
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: beige;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  
+  a:active {
+    color: white
+    background-color: transparent;
+    text-decoration: underline;
+  } 
+
+
+/* COLOR FOR CLASS ELEMENTS */
 .completed{
     text-decoration: line-through;
     color: gray;
 }
 .not{
     text-decoration: underline;
+
+}
+
+.header{
+   width: 100%; 
+   float: left; 
+   text-align: center;
+}
+
+.loginPanel{
+    width: 50%; 
+    height: 15em;
+    margin: auto;
+    float: left; 
+    align-items: center;
+  justify-content: center;
+    background-color: rgb(46, 46, 56);
+    color: white;
+    display: flex;
+    border: solid 1px rgb(40, 40, 48) ;
+    border-radius: 5%;
+    flex-direction: column
+}
+
+.login{
+    padding: 20px;
+    border-radius: 10px;
+    color: #ffffff;
+}
+
+.block{
+    width: 100%;
+    text-align: center;
+    display: flex;
 }
