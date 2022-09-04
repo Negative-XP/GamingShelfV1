@@ -25,7 +25,7 @@ module.exports = {
     try {
       const movName = req.body.userSearch;
       fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=06a092c024c1758ff5f69e8664a2042e&language=en-US&page=1&include_adult=false&query=${movName}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${API_Key_Here}&language=en-US&page=1&include_adult=false&query=${movName}`
       )
         .then((res) => res.json())
         .then((res) => {
