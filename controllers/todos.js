@@ -12,9 +12,8 @@ module.exports = {
         completed: false,
       }); //Find all of items in the database that aren't completed that match the user id
       res.render('todos.ejs', {
-        todos: todoItems,
-        left: itemsLeft,
         user: req.user,
+        movies: { results: [] },
       }); //Renders all the todoItems, all the items that are marked incomplete, and the users name
     } catch (err) {
       console.log(err); //If there is an error, return the error
@@ -23,18 +22,34 @@ module.exports = {
 
   getResults: async (req, res) => {
     try {
-      const movName = req.body.userSearch;
+      const movName = req.query.userSearch;
+      console.log('response', req.query);
       fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${API_Key_Here}&language=en-US&page=1&include_adult=false&query=${movName}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_Key}&language=en-US&page=1&include_adult=false&query=${movName}`
       )
         .then((res) => res.json())
-        .then((res) => {
-          obj = JSON.parse(JSON.stringify(res));
-          console.log(obj);
+        .then((data) => {
+          obj = JSON.parse(JSON.stringify(data));
+          res.render('todos.ejs', {
+            user: req.user,
+            movies: obj,
+          });
         });
-      res.render('todos.ejs', { obj });
     } catch (err) {
       console.error(err);
+    }
+  },
+
+  favorites: async (req, res) => {
+    try {
+      const movID = req.params.id;
+      await Todo.create({
+        movID: movID,
+        userId: req.user.id,
+      });
+      res.redirect('/todos'); //reload the page
+    } catch (err) {
+      console.log(err);
     }
   },
 
@@ -43,7 +58,6 @@ module.exports = {
     try {
       await Todo.create({
         todo: req.body.todoItem,
-        completed: false,
         userId: req.user.id,
       }); //create  new item, set it to incomplete by default and to assign it the user's id
       console.log('Todo has been added!'); //console log that we completed it

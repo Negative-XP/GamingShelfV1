@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 /* CSS FOR HTML ELEMENTS */
 
 body {
@@ -13,6 +16,11 @@ h1 {
   color: white;
   font-size: 2em;
   margin: 0;
+}
+
+h2 {
+  color: white;
+  font-size: 1.4rem;
 }
 
 a:link {
@@ -38,6 +46,14 @@ a:active {
   color: white;
   background-color: transparent;
   text-decoration: underline;
+}
+
+ul,
+li {
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
 }
 
 /* Wrappers */
@@ -73,7 +89,7 @@ header {
 
 .logo {
   display: inline-block;
-  background-color: beige;
+  background-color: white;
   line-height: 75px;
   height: 75px;
   width: 75px;
@@ -97,29 +113,37 @@ input {
   color: white;
 }
 
-/* COLOR FOR CLASS ELEMENTS */
-
-/* .headerTitle {
-  width: 80%;
-  display: inline;
-  text-align: left;
-  color: white;
-  font-size: largest;
+.searchResults {
+  display: flex;
+  flex-flow: wrap;
 }
 
-.headerUser {
-  width: 20%;
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+img {
   display: inline-block;
-  text-align: right;
+  width: 100%;
 }
 
-.completed {
-  text-decoration: line-through;
-  color: gray;
+.mName {
+  color: white;
+  padding: 0.5rem;
 }
-.not {
-  text-decoration: underline;
-} */
+
+.feedback {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  font-size: 0.6rem;
+  padding: 0 0.5rem;
+  justify-content: space-between;
+}
 
 .Panel {
   width: auto;

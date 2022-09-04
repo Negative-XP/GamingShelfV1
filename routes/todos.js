@@ -7,6 +7,8 @@ router.get('/', ensureAuth, todosController.getTodos); //Shows the path to the c
 
 router.get('/searchAPI', todosController.getResults); //shows the path to the controller to fetch the API results.
 
+router.get('/favorites/:id', todosController.favorites);
+
 router.post('/createTodo', todosController.createTodo); //Sends a post request to make a new todo item, using the controller, to send to database
 
 router.put('/markComplete', todosController.markComplete); //Sends a put request to update an item, using the controller, to send to database
