@@ -16,22 +16,23 @@
       </section>
     </header>
     <section class="wrapper">
-      <h2>
+      <section class = 'headerTitle'><h2>
         Hello <%= user.userName %>, please search for a movie to add to your
         favorites.
       </h2>
-      <% console.log(movies) %>
-
+    </section>
+      <!-- <% console.log(movies) %> -->
+    <section class ='searchBar'>
       <form action="/todos/searchAPI" method="GET">
         <input
           class="movieName"
           type="text"
           placeholder="Movie Name"
           name="userSearch"
-        />
+        /><br>
         <input type="submit" class="movieSubmit" />
       </form>
-
+    </section>
       <section class="searchResults">
         <% movies.results.forEach( el => { %>
         <section class="todoItem" data-id="<%=el._id%>">
@@ -40,27 +41,19 @@
             class="'mPoster" >
             <span class="mName"><%= el.title %></span>
             <section class="feedback">
-              <span class="mFav">
-                <a href="/todos/favorites/<%= el.id %>">Favorite</a></span
-              >
+              <span class="mFav"><a href="/todos/favorites/<%= el.id %>" method='POST'>Favorite</a></span>
               <span class="mLike">Like</span>
             </section>
           </section>
         </section>
         <% }) %>
       </section>
-      <section class="myFavs"></section>
-      <!-- <form action="/todos/createTodo" method="POST">
+      <!-- <section class="myFavs"></section>
+      <form action="/todos/createTodo" method="POST">
         <input type="text" placeholder="Add Movie" name="todoItem" />
         <input type="submit" />
       </form> -->
-      <!-- <ul>
-    <%# todos.forEach( el => { %>
-        <li class='todoItem' data-id='<%#= el.completed === true ? 'completed' : 'not'%>'><%#= el.todo %></span>
-            <span class='del'> Delete </span>
-        </li>
-    <%# }) %>    
-    </ul>   -->
+     
     </section>
     <script src="/js/main.js"></script>
   </body>

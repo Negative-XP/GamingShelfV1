@@ -116,6 +116,7 @@ input {
 .searchResults {
   display: flex;
   flex-flow: wrap;
+  width: 100%;
 }
 
 .card {
@@ -171,4 +172,18 @@ img {
   width: 100%;
   text-align: center;
   display: flex;
+}
+
+.headerTitle{
+  width: 100%;
+  text-align: center;
+}
+
+.searchBar{
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  float: left;
+  display: flex;
+  align-items: center;
 }

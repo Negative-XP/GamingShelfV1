@@ -23,7 +23,7 @@ module.exports = {
   getResults: async (req, res) => {
     try {
       const movName = req.query.userSearch;
-      console.log('response', req.query);
+      // console.log('response', req.query);
       fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_Key}&language=en-US&page=1&include_adult=false&query=${movName}`
       )
@@ -44,17 +44,19 @@ module.exports = {
     try {
       const movID = req.params.id;
       await Todo.create({
-        movID: movID,
+        movID: req.params.id,
         userId: req.user.id,
+        consoleLog: console.log(req.params.id)
       });
       res.redirect('/todos'); //reload the page
+      console.log(`Added your movie: ${movID}, User: ${req.user.id}!`)
     } catch (err) {
       console.log(err);
     }
   },
-
+//n
   createTodo: async (req, res) => {
-    //Create async function
+    //Create async functio
     try {
       await Todo.create({
         todo: req.body.todoItem,

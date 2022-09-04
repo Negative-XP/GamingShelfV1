@@ -9,13 +9,17 @@ const TodoSchema = new mongoose.Schema({
   movID: {
     //Declares the variable for that item
     type: String, //Declares that it is a boolean
-    required: true, //Requires this for the submission
+    required: false, //Requires this for the submission
   },
   userId: {
     //Declares the variable for that item
     type: String, //Declares that it is a string
-    required: true, //Requires it for the submission
+    required: false, //Requires it for the submission
   },
+  consoleLog:{
+    type: String,
+    required: false,
+  }
 });
 
 module.exports = mongoose.model('Todo', TodoSchema); //Response to a request for this model, returns the completed todo model
