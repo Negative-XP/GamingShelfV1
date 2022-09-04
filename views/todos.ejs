@@ -17,11 +17,13 @@
     </header>
     <section class="wrapper">
       <h2>Hello <%= user.userName %>, please search for a movie to add to your favorites.</h2>
-      <input class="movieName" type="text" placeholder="Movie Name">
-      <input type="submit" class="movieSubmit">
-        
-      <section class="searchResults"></section>
-
+      <form action="/todos/searchAPI" method="GET">
+        <input class="movieName" type="text" placeholder="Movie Name" name="userSearch">
+        <input type="submit" class="movieSubmit">
+      </form>
+      <section class="searchResults">
+        <% console.log(todos.obj) %> 
+      </section>
       <form action="/todos/createTodo" method='POST'>
         <input type="text" placeholder="Add Movie" name='todoItem'>
         <input type="submit">

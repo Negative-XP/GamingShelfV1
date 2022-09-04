@@ -69,25 +69,25 @@ async function markIncomplete() {
 }
 
 // API
-const movieSearch = document.querySelector('.movieSubmit');
-const name = document.querySelector('.movieName');
+// const movieSearch = document.querySelector('.movieSubmit');
+// const name = document.querySelector('.movieName');
 
-movieSearch.addEventListener('click', getMovies);
+// movieSearch.addEventListener('click', getMovies);
 
-function getMovies() {
-  let movName = document.querySelector('.movieName').value;
+// function getMovies() {
+//   let movName = document.querySelector('.movieName').value;
 
-  fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=${Put_Key_Here}&language=en-US&query=${movName}&page=1&include_adult=false`
-  )
-    .then((res) => res.json())
+//   fetch(
+//     `https://api.themoviedb.org/3/search/movie?api_key=06a092c024c1758ff5f69e8664a2042e&language=en-US&query=${movName}&page=1&include_adult=false`
+//   )
+//     .then((res) => res.json())
 
-    .then((data) => {
-      obj = JSON.parse(JSON.stringify(data));
-      console.log(obj);
-    })
+//     .then((data) => {
+//       obj = JSON.parse(JSON.stringify(data));
+//       console.log(obj);
+//     })
 
-    .catch((err) => {
-      console.log(`error ${err}`);
-    });
-}
+//     .catch((err) => {
+//       console.log(`error ${err}`);
+//     });
+// }
