@@ -37,26 +37,40 @@
         <% movies.results.forEach( el => { %>
         <section class="todoItem" data-id="<%=el._id%>">
           <section class="card">
-            <img src = <%=`https://image.tmdb.org/t/p/w1280${el.poster_path}` %>
-            class="'mPoster" >
-            <span class="mName"><%= el.title %></span>
+            <section class="searchImage">
+            <img class="mPoster" src = <%=`https://image.tmdb.org/t/p/w1280${el.poster_path}` %> >
+          </section>
+            <span class="mName"><%=  el.title.length > 20 ? el.title.slice(0,32) + '...' : el.title  %></span>
             <section class="feedback">
-              <span class="mFav"><a href="/todos/favorites/<%= el.id,el.title,el.poster_path %>" method='POST'>Favorite</a></span>
+              <!-- <%= el.poster_path == null ? el.poster_path = '/null' : el.poster_path%> -->
+              <span class="mFav"><a href="/todos/favorites/<%=[el.title, el.id, el.poster_path.slice(1,el.poster_path.length)]%>" method='POST'>Favorite</a></span> 
+              <!-- The above code send the title, posterpath with the '/' removed, and the id to the server as an array, but actually a string -->
               <span class="mLike">Like</span>
             </section>
           </section>
         </section>
         <% }) %>
       </section>
-
+<!--  -->
       <h2 class = 'headerTitle'> Your Current Favorites </h2>
+      <section class="searchResults">
       <% todos.forEach( el => { %>
         <li class='todoItem' data-id='<%=el._id%>'>
-          <img src = <%=`` %>>
-            <span ><%= el.movID %></span>
-            <span class='del'> Delete </span>
+          <section class="card" data-id='<%=el._id%>'>
+            <section class="searchImage">
+          <img class="'mPoster" src = <%=`https://image.tmdb.org/t/p/w1280/${el.movPoster}` %>>
+        </section>
+          <!-- Above sets the poster path using the element -->
+          <section class= "FavBottom">
+            <span class="mName"><%= el.movName.length > 20 ? el.movName.slice(0,32) + ' ...' : el.movName %></span><br> 
+            <!-- Above sets the pictures name -->
+            <span class='del'> REMOVE </span>
+            <!-- die -->
+            </section>
+        </section>
         </li>
       <% }) %>    
+      </section>
 </ul>
      
     </section>

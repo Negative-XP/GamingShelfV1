@@ -9,8 +9,6 @@ router.get('/searchAPI', todosController.getResults); //shows the path to the co
 
 router.get('/favorites/:id', todosController.favorites);
 
-// router.post('/favorite', todosController.createTodo); //Sends a post request to make a new todo item, using the controller, to send to database
-
 router.put('/markComplete', todosController.markComplete); //Sends a put request to update an item, using the controller, to send to database
 
 router.put('/markIncomplete', todosController.markIncomplete); //Sends a put request to update an item, using the controller, to send to database
@@ -18,6 +16,5 @@ router.put('/markIncomplete', todosController.markIncomplete); //Sends a put req
 router.delete('/deleteTodo', todosController.deleteTodo); //Sends a delete request to remove a todo item, using the controller, to send to database
 
 router.post('/favorite', todosController.favorites);
-//
+
 module.exports = router; //Callback functions, allows us to use this file
-//hi

@@ -48,25 +48,17 @@ module.exports = {
 //
   favorites: async (req, res) => {
     try{
-    // let obj
-    //   try{
-    //     fetch(
-    //       data =  `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${process.env.API_Key}&language=en-US`
-    //       )
-    //       .then((res) => res.json())
-    //       .then((data) => {
-    //       obj = JSON.parse(JSON.stringify(data))})
-      const movID = req.params.id
-      const movPoster = req.params.poster_path
-      const movName = req.params.title
+      const movID = req.params.id.split(',')[0] //Splits the received string into an array and grabs the 0 index
+      const movPoster = req.params.id.split(',')[2] //Splits the received string into an array and grabs the 2 index
+      const movName = req.params.id.split(',')[1] //Splits the received string into an array and grabs the 1 index
       await Todo.create({
-        movID: req.params.id,
+        movID: req.params.id.split(',')[1],  //Splits the received string into an array and grabs the 0 index
         userId: req.user.id,
-        movName: req.params.title,
-        movPoster: req.params.poster_path,
+        movName: req.params.id.split(',')[0], //Splits the received string into an array and grabs the 1 index
+        movPoster: req.params.id.split(',')[2], //Splits the received string into an array and grabs the 2 index
       });
       res.redirect('/todos'); //reload the page
-      console.log(`Added your movie: ${movID} ${movName} ${movPoster}, User: ${req.user.id}!`)
+      console.log(`Added your movie: ${movID} ${movPoster} ${movName}, User: ${req.user.id}!`)
     } catch (err) {
       console.log(err);
     }

@@ -6,18 +6,20 @@ const TodoSchema = new mongoose.Schema({
   //   type: String, //Declares that it is a string
   //   required: true, //Requires this for the submission
   // },
-  movID: {
+  movID: { //Movie's ID in the TMDB
     //Declares the variable for that item
     type: String, //Declares that it is a boolean
     required: false, //Requires this for the submission
   },
-  movPoster:{
-    type: String, 
-    required: false,
+  movPoster:{ //Movie's PosterPath in the TMDB
+     //Declares the variable for that item
+     type: String, //Declares that it is a boolean
+     required: false, //Requires this for the submission
   },
-  movName:{
-    type: String,  
-    required: false
+  movName:{ //Movie's Title in the TMDB
+    //Declares the variable for that item
+    type: String, //Declares that it is a boolean
+    required: false, //Requires this for the submission
   },
   userId: {
     //Declares the variable for that item
