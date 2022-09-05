@@ -200,8 +200,20 @@ img {
  height: 80%;
 }
 
-.favbottom{
-  height: 100%
+.favBottom{
+  height: 100%;
+  width: 100;
+
 }
 
-.
+.titleFav{
+  height: 3em;
+  width: auto;
+
+  display: inline block
+}
+
+.del:hover{
+  color: red;
+  text-decoration: underline;
+}

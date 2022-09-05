@@ -61,12 +61,14 @@
           <img class="'mPoster" src = <%=`https://image.tmdb.org/t/p/w1280/${el.movPoster}` %>>
         </section>
           <!-- Above sets the poster path using the element -->
-          <section class= "FavBottom">
+          
+            <section class="titleFav">
             <span class="mName"><%= el.movName.length > 20 ? el.movName.slice(0,32) + ' ...' : el.movName %></span><br> 
             <!-- Above sets the pictures name -->
+            </section>
             <span class='del'> REMOVE </span>
             <!-- die -->
-            </section>
+          
         </section>
         </li>
       <% }) %>    
