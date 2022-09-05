@@ -1,7 +1,6 @@
 const deleteBtn = document.querySelectorAll('.del');
 const todoItem = document.querySelectorAll('span.not');
 const todoComplete = document.querySelectorAll('span.completed');
-const movies = document.querySelectorAll('span.mfav')
 
 Array.from(deleteBtn).forEach((el) => {
   el.addEventListener('click', deleteTodo);
@@ -15,9 +14,7 @@ Array.from(todoComplete).forEach((el) => {
   el.addEventListener('click', markIncomplete);
 });
 
-Array.from(movies).forEach((el) => {
-  el.addEventListener('click', favorite);
-});
+
 
 async function deleteTodo() {
   const todoId = this.parentNode.dataset.id;
@@ -36,24 +33,6 @@ async function deleteTodo() {
     console.log(err);
   }
 }
-// async function favorite() {
-//   const favoriteMovie = this.parentNode.dataset.id;
-//   try {
-//     const response = await fetch('todos/favorite', {
-//       method: 'post',
-//       headers: { 'Content-type': 'application/json' },
-//       body: JSON.stringify({
-//         favoriteFromJSFile: favoriteMovie,
-//       }),
-//     });
-//     const data = await response.json();
-//     console.log(data);
-//     location.reload();
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
-//
 
 async function markComplete() {
   const todoId = this.parentNode.dataset.id;

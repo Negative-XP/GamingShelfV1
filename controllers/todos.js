@@ -10,10 +10,13 @@ module.exports = {
       const itemsLeft = await Todo.countDocuments({
         userId: req.user.id,
         completed: false,
-      }); //Find all of items in the database that aren't completed that match the user id
+      }); 
+
+      //Find all of items in the database that aren't completed that match the user id
       res.render('todos.ejs', {
         user: req.user,
         movies: { results: [] },
+        todos: todoItems,
       }); //Renders all the todoItems, all the items that are marked incomplete, and the users name
     } catch (err) {
       console.log(err); //If there is an error, return the error
@@ -23,6 +26,8 @@ module.exports = {
   getResults: async (req, res) => {
     try {
       const movName = req.query.userSearch;
+      const todoItems = await Todo.find({ userId: req.user.id }); //Attempts to find all todos that match the user ID
+
       // console.log('response', req.query);
       fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_Key}&language=en-US&page=1&include_adult=false&query=${movName}`
@@ -33,28 +38,40 @@ module.exports = {
           res.render('todos.ejs', {
             user: req.user,
             movies: obj,
+            todos: todoItems,
           });
         });
     } catch (err) {
       console.error(err);
     }
   },
-
+//
   favorites: async (req, res) => {
-    try {
-      const movID = req.params.id;
+    try{
+    // let obj
+    //   try{
+    //     fetch(
+    //       data =  `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${process.env.API_Key}&language=en-US`
+    //       )
+    //       .then((res) => res.json())
+    //       .then((data) => {
+    //       obj = JSON.parse(JSON.stringify(data))})
+      const movID = req.params.id
+      const movPoster = req.params.poster_path
+      const movName = req.params.title
       await Todo.create({
         movID: req.params.id,
         userId: req.user.id,
-        consoleLog: console.log(req.params.id)
+        movName: req.params.title,
+        movPoster: req.params.poster_path,
       });
       res.redirect('/todos'); //reload the page
-      console.log(`Added your movie: ${movID}, User: ${req.user.id}!`)
+      console.log(`Added your movie: ${movID} ${movName} ${movPoster}, User: ${req.user.id}!`)
     } catch (err) {
       console.log(err);
     }
   },
-//n
+//
   createTodo: async (req, res) => {
     //Create async functio
     try {

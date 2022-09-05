@@ -41,18 +41,23 @@
             class="'mPoster" >
             <span class="mName"><%= el.title %></span>
             <section class="feedback">
-              <span class="mFav"><a href="/todos/favorites/<%= el.id %>" method='POST'>Favorite</a></span>
+              <span class="mFav"><a href="/todos/favorites/<%= el.id,el.title,el.poster_path %>" method='POST'>Favorite</a></span>
               <span class="mLike">Like</span>
             </section>
           </section>
         </section>
         <% }) %>
       </section>
-      <!-- <section class="myFavs"></section>
-      <form action="/todos/createTodo" method="POST">
-        <input type="text" placeholder="Add Movie" name="todoItem" />
-        <input type="submit" />
-      </form> -->
+
+      <h2 class = 'headerTitle'> Your Current Favorites </h2>
+      <% todos.forEach( el => { %>
+        <li class='todoItem' data-id='<%=el._id%>'>
+          <img src = <%=`` %>>
+            <span ><%= el.movID %></span>
+            <span class='del'> Delete </span>
+        </li>
+      <% }) %>    
+</ul>
      
     </section>
     <script src="/js/main.js"></script>
