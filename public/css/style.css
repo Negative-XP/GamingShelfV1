@@ -68,7 +68,7 @@ li {
   height: 100%;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin:  auto;
   justify-content: space-between;
   align-items: center;
 }
@@ -79,6 +79,7 @@ header {
   height: 6rem;
   width: 100%;
   text-align: center;
+  margin: 0% 0% 4% 0%;
 }
 
 .centerIndex {
@@ -216,4 +217,43 @@ img {
 .del:hover{
   color: red;
   text-decoration: underline;
+}
+
+.gHeader{
+  display: inline-block;
+
+  width: 100%;
+  
+}
+
+.gCover{
+  display: inline;
+  width: auto;
+  height: auto;
+}
+
+.gTitle{
+  display: inline-block;
+  margin: 0% 20%;
+  font-size: 3em;
+  color: white;
+}
+
+.gDataChunk{
+  display: inline-block;
+  color: white;
+}
+
+.gSummary{
+  display: inline-block;
+  color: white;
+  width: 75%;
+  
+}
+
+.gInfo{
+  width: 20%;
+
+  float: left;
+  color: white;
 }

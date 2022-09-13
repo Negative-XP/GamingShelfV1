@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=games[0].name %></title>
+    <script src="https://kit.fontawesome.com/bbc193bfe3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css" />
+    
+  </head>
+  <body>
+    <header>
+      <section class="headerWrapper">
+        <span class="logo"><a href="/dashboard">GS</a></span>
+        <h1>Gaming Shelf</h1>
+        <span class="logout"><a href="/logout">Logout</a></span>
+      </section>
+    </header>
+    <section class="wrapper">
+    <section class ="gHeader">    
+      <img class="gCover" src = <%=`https://images.igdb.com/igdb/image/upload/t_cover_big/${games[0].cover == undefined ? games[0].cover = '/null' : games[0].cover.image_id}.png`%> >
+      <p class="gTitle"><%= games[0].name%></p>
+    </section>
+    <section class = "gData">
+
+      <section class="gInfo">
+      
+        <% games[0].platforms.forEach(el => { %> 
+            <p><%= el.alternative_name %></p>
+          <%})%>
+      </section>
+      <section class="gSummary">
+        <p><%=games[0].summary%></p>
+      </section>
+   
+      
+    </section>
+
+
+    </section>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

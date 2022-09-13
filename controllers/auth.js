@@ -4,7 +4,7 @@ const User = require('../models/User') //Declares the path
 
  exports.getLogin = (req, res) => { //Getting a request to login
     if (req.user) {
-      return res.redirect('/todos') //If the login exists, redirect the user to the login page
+      return res.redirect('/dashboard') //If the login exists, redirect the user to the login page
     }
     res.render('login', { //If there isn't a matching login, sends them back to the login page
       title: 'Login' //
@@ -31,7 +31,7 @@ const User = require('../models/User') //Declares the path
       req.logIn(user, (err) => {
         if (err) { return next(err) }
         req.flash('success', { msg: 'Success! You are logged in.' }) //If it's a success, it pushes our msg
-        res.redirect(req.session.returnTo || '/todos') //If it is a success, renders the todos.ejs
+        res.redirect(req.session.returnTo || '/dashboard') //If it is a success, renders the todos.ejs
       })
     })(req, res, next)
   }
@@ -49,7 +49,7 @@ const User = require('../models/User') //Declares the path
 
   exports.getSignup = (req, res) => { //Sign up request
     if (req.user) { //If the user is logged in, send them back to \todos
-      return res.redirect('/todos')
+      return res.redirect('/dashboard')
     }
     res.render('signup', { //If the user doesn't exist, render the signup.ejs
       title: 'Create Account'
@@ -89,7 +89,7 @@ const User = require('../models/User') //Declares the path
           if (err) {
             return next(err) //Return errors if there are any 
           }
-          res.redirect('/todos') //Sends you to the todos page
+          res.redirect('/dashboard') //Sends you to the todos page
         })
       })
     })

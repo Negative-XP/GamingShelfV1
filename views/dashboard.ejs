@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Favorite Movies</title>
+    <script src="https://kit.fontawesome.com/bbc193bfe3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <section class="headerWrapper">
+        <span class="logo"><a href="/">GS</a></span>
+        <h1>Gaming Shelf</h1>
+        <span class="logout"><a href="/logout">Logout</a></span>
+      </section>
+    </header>
+    <section class="wrapper">
+      <section class = 'headerTitle'><h2>
+        Hello <%= user.userName %>, please search for a game to add to your
+        favorites.
+      </h2>
+    </section>
+      
+    <section class ='searchBar'>
+      <form action="/dashboard/searchAPI" method="get">
+        <input
+          class="movieName"
+          type="text"
+          placeholder="Movie Name"
+          name="userSearch"
+        /><br>
+        <input type="submit" class="movieSubmit" />
+      </form>
+    </section>
+    <section class="searchResults">
+      <% games.forEach( el => { %>
+      <section class="todoItem" data-id="<%=el.id%>">
+        <section class="card">
+          <section class="searchImage">
+                      <a href ="/dashboard/game/<%=[el.name, el.id]%>" method="get"><img class="mPoster" src = <%=`https://images.igdb.com/igdb/image/upload/t_cover_big/${el.cover == undefined ? el.cover = '/null' : el.cover.image_id}.png`%> ></a>
+        </section>
+          <span class="mName"><%=  el.name.length > 20 ? el.name.slice(0,32) + '...' : el.name  %></span>
+          <section class="feedback">
+            <!-- <%= el.poster_path == null ? el.poster_path = '/null' : el.poster_path%> -->
+            <span class="mFav"><a href="/todos/favorites/<%=[el.name, el.id, el.poster_path.slice(1,el.poster_path.length)]%>" method='POST'><i class="fa-solid fa-heart"></i></a></span> 
+            <!-- The above code send the title, posterpath with the '/' removed, and the id to the server as an array, but actually a string -->
+            <span class="mLike">Like</span>
+          </section>
+        </section>
+      </section>
+      <% }) %>
+    </section>
+   
+    </section>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

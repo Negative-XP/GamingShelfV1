@@ -8,8 +8,9 @@ const flash = require('express-flash');
 const logger = require('morgan');
 const connectDB = require('./config/database');
 const mainRoutes = require('./routes/main');
-const todoRoutes = require('./routes/todos');
-
+const dashboardRoutes = require('./routes/dashboard');
+const axios = require('axios').default
+ 
 require('dotenv').config({ path: './config/.env' });
 
 // Passport config
@@ -36,10 +37,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+
 app.use(flash());
 
 app.use('/', mainRoutes);
-app.use('/todos', todoRoutes);
+app.use('/dashboard', dashboardRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(

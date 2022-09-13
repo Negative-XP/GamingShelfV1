@@ -1,8 +1,9 @@
 const Todo = require('../models/Todo'); //Shows the path to the Todo schema
 const fetch = require('cross-fetch');
-
+const axios = require('axios')
+console.log('Im being accessed')
 module.exports = {
-  getTodos: async (req, res) => {
+  getDashboard: async (req, res) => {
     //getTodos async function
     console.log(req.user); //Console logs the user
     try {
@@ -13,38 +14,124 @@ module.exports = {
       }); 
 
       //Find all of items in the database that aren't completed that match the user id
-      res.render('todos.ejs', {
+      res.render('dashboard.ejs', {
         user: req.user,
-        movies: { results: [] },
+        games:  [] ,
         todos: todoItems,
       }); //Renders all the todoItems, all the items that are marked incomplete, and the users name
     } catch (err) {
       console.log(err); //If there is an error, return the error
     }
   },
+ 
+  // getResults: async (req, res) => {
+  //   try {
+  //     const movName = req.query.userSearch;
+  //     const todoItems = await Todo.find({ userId: req.user.id }); //Attempts to find all todos that match the user ID
 
-  getResults: async (req, res) => {
-    try {
-      const movName = req.query.userSearch;
-      const todoItems = await Todo.find({ userId: req.user.id }); //Attempts to find all todos that match the user ID
+  //     // console.log('response', req.query);
+  //     fetch(
+  //       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_Key}&language=en-US&page=1&include_adult=false&query=${movName}`
+  //     )
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         obj = JSON.parse(JSON.stringify(data));
+  //         res.render('dashboard.ejs', {
+  //           user: req.user,
+  //           movies: obj,
+  //           todos: todoItems,
+  //         });
+  //       });
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // },
 
-      // console.log('response', req.query);
-      fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_Key}&language=en-US&page=1&include_adult=false&query=${movName}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          obj = JSON.parse(JSON.stringify(data));
-          res.render('todos.ejs', {
-            user: req.user,
-            movies: obj,
-            todos: todoItems,
-          });
-        });
-    } catch (err) {
-      console.error(err);
-    }
-  },
+    getResults: async (req, res, resCover) => {
+      // console.log(req)
+      const title = req.query.userSearch
+      // console.log('response', req.query.userSearch)
+     const response = await axios({
+      method: "POST",
+      url: "https://api.igdb.com/v4/games",
+     headers: {
+                Accept: "application/json",
+                "Client-ID": `${process.env.id}`,
+                "Authorization": `${process.env.accessToken}`,
+            },
+            
+            data: `search "${title}";` + "fields id, name, cover.*, artworks, summary, screenshots.url; limit 19; ",
+          })
+          .then((response) => {
+            // console.log(response.data.artworks)
+                      res.render(`dashboard.ejs`, { games: response.data,  user: req.user, images: response.data.screenshots });
+                      
+                    })
+                  .catch((err) => {
+                      console.error(err)
+                      console.log(title)
+                  })
+  },  
+
+
+  game: async (req, res, resCover) => {
+    // console.log(req)
+    const id = req.params.id.split(',')[1]
+    const title = req.params.id.split(',')[0]
+   console.log('response', req.params.id)
+   const response = await axios({
+    method: "POST",
+    url: "https://api.igdb.com/v4/games",
+   headers: {
+              Accept: "application/json",
+              "Client-ID": `${process.env.id}`,
+              "Authorization": `${process.env.accessToken}`,
+          },
+          
+          data: `search "${title}";` + "fields name, id, platforms.*, artworks.*, cover.*, screenshots.*, summary; limit 19;",
+        })
+        .then((response) => {
+          console.log(id)
+                    res.render(`game.ejs`, { games: response.data.filter(x => x.id == id),  user: req.user, id: id});
+                    
+                  })
+                .catch((err) => {
+                    console.error(err)
+                    console.log(title)
+                })
+},  
+//   const resCover = await axios({
+//     method: "POST",
+//     url: "https://api.igdb.com/v4/covers",
+//    headers: {
+//               Accept: "application/json",
+//               "Client-ID": `${process.env.id}`,
+//               "Authorization": `${process.env.accessToken}`,
+//           },
+//           data: "fields game, cover, summary, url;",
+// )
+  // getResults: async(req, res) => {
+  //   const userSearch = req.query.userSearch
+  //   axios({
+  //       url: "https://api.igdb.com/v4/games",
+  //       method: "POST",
+        
+  //       headers: {
+  //           Accept: "application/json",
+  //           "Client-ID": `${process.env.id}`,
+  //           Authorization: `Bearer ${process.env.access_token}`,
+  //       },
+  //       data: `search=${userSearch}` + "fields name, cover.url, summary;",
+  //   })
+  //       .then((response) => {
+  //           console.log(response.data);
+  //           res.render(`dashboard.ejs`, { games: response.data });
+  //       })
+  //       .catch((err) => {
+  //           console.error(err);
+  //       });
+
+//
 //
   favorites: async (req, res) => {
     try{
