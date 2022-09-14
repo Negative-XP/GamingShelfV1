@@ -24,29 +24,7 @@ module.exports = {
     }
   },
  
-  // getResults: async (req, res) => {
-  //   try {
-  //     const movName = req.query.userSearch;
-  //     const todoItems = await Todo.find({ userId: req.user.id }); //Attempts to find all todos that match the user ID
-
-  //     // console.log('response', req.query);
-  //     fetch(
-  //       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_Key}&language=en-US&page=1&include_adult=false&query=${movName}`
-  //     )
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         obj = JSON.parse(JSON.stringify(data));
-  //         res.render('dashboard.ejs', {
-  //           user: req.user,
-  //           movies: obj,
-  //           todos: todoItems,
-  //         });
-  //       });
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // },
-
+ 
     getResults: async (req, res, resCover) => {
       // console.log(req)
       const title = req.query.userSearch
@@ -60,10 +38,10 @@ module.exports = {
                 "Authorization": `${process.env.accessToken}`,
             },
             
-            data: `search "${title}";` + "fields id, name, cover.*, artworks, summary, screenshots.url; limit 19; ",
+            data: `search "${title}";` + "fields id, category, name, cover.*, artworks, summary, screenshots.url; where category = (0,8,9); limit 18; ",
           })
           .then((response) => {
-            // console.log(response.data.artworks)
+            response.data.forEach(n => console.log(n))
                       res.render(`dashboard.ejs`, { games: response.data,  user: req.user, images: response.data.screenshots });
                       
                     })

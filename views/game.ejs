@@ -10,27 +10,32 @@
     
   </head>
   <body>
-    <header>
+    <header class="gOverride">
       <section class="headerWrapper">
         <span class="logo"><a href="/dashboard">GS</a></span>
         <h1>Gaming Shelf</h1>
         <span class="logout"><a href="/logout">Logout</a></span>
       </section>
     </header>
+    <section class="test" style= <%=`background-image:url(//images.igdb.com/igdb/image/upload/t_1080p/${games[0].screenshots[0].image_id}.png);background-size:cover;`%>>
     <section class="wrapper">
-    <section class ="gHeader">    
+    <section class ="gHeader">   
+      <section class="imageWrapper"> 
       <img class="gCover" src = <%=`https://images.igdb.com/igdb/image/upload/t_cover_big/${games[0].cover == undefined ? games[0].cover = '/null' : games[0].cover.image_id}.png`%> >
+    </section>
+    <section class="titleWrapper">
       <p class="gTitle"><%= games[0].name%></p>
+    </section>
     </section>
     <section class = "gData">
 
-      <section class="gInfo">
+      <section class="gInfo Info">
       
         <% games[0].platforms.forEach(el => { %> 
             <p><%= el.alternative_name %></p>
           <%})%>
       </section>
-      <section class="gSummary">
+      <section class="gSummary Info">
         <p><%=games[0].summary%></p>
       </section>
    
@@ -39,6 +44,7 @@
 
 
     </section>
+  </section>
     <script src="/js/main.js"></script>
   </body>
 </html>
