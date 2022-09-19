@@ -61,7 +61,7 @@ li {
 
 footer{
   height: 7em;
-  margin: 5% 0%;
+  margin: 20% 0% 0% 0%;
   background-color:  rgb(31, 31, 37);
 }
 
@@ -236,25 +236,25 @@ z-index: 1;
 }
 
 .gCover{
-  display: inline-block;
+  display: inline;
   width: auto;
   height: auto;
 }
 
 .gTitle{
-  display: inline-block;
+  display: inline;
   margin: 0% 0%;
   font-size: 3em;
   color: white;
   text-overflow: clip;
-  
+
 
 }
 
 .gDataChunk{
-  display: flex;
+  display: inline-block
   color: white;
-  width: 100%;
+  width: 30%;
   height: auto;
   border: white solid 1px;
 }
@@ -266,24 +266,29 @@ z-index: 1;
   border-radius: 10px;
   border: white 1px solid;
   width: 100%;
-  clear: both;
+
 }
 
 .gSummary{
   display: inline-block;
   color: white;
-  width: 30%;
+  width: 95%;
   margin: 2.5%;
-   
+  height: auto;
 }
 .gPlatform{
-  width: 200px;
-  height: auto; float: left;
- 
+  display: inline-block;
+  width: 95%;
   color: white;
   margin: 2.5%;
-  display: block;
+
+  height: auto;
+
 }
+
+.gTop{
+  border: solid pink 1px;
+display: flex;}
 
 .test{
   display: inline-block;
@@ -308,6 +313,7 @@ z-index: 1;
 .screenPostCap{
   padding: 3%;
   text-align: center;
+  width: 100%;
 }
 
 .formSubmit{
@@ -322,4 +328,9 @@ z-index: 1;
   margin: 0 auto;
 
   height: auto;
+}
+
+.rnd{
+  border: solid 1px rgb(47, 47, 54);
+  border-radius: 5%;
 }

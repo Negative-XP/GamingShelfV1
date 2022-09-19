@@ -41,6 +41,7 @@
           </p>
         </section>
       </section>
+      <section class="gTop">
       <section class="gDataChunk">
         <section class="gPlatform Info">
           <% games[0].platforms.forEach(el=> { %>
@@ -57,61 +58,66 @@
         </section>
      
 
-      <section class="Info formSubmit">
-        <div class="mt-5">
-          <h2>Add a post</h2>
-          <form action="/post/createPost/<%=games[0].id %>" enctype="multipart/form-data" method="POST">
-            <div class="mb-3">
-              <label for="title" class="form-label">Title</label>
-              <input type="text" class="form-control" id="title" name="title">
-            </div>
-            <div class="mb-3">
-              <label for="caption" class="form-label">Caption</label>
-              <textarea class="form-control" id="caption" name="caption"></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="imgUpload" class="form-label">Image</label>
-              <input type="file" class="form-control" id="imageUpload" name="file">
-            </div>
-            <div class="mb-3">
-              <label for="gameId" class="gameId" id="gameId" style="visibility: hidden;">
-                <%= games[0].id %>
-              </label>
-            </div>
-            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-          </form>
+      
+  </section>
+  <section class="Info formSubmit">
+    <div class="mt-5">
+      <h2>Add a post</h2>
+      <form action="/post/createPost/<%=games[0].id %>" enctype="multipart/form-data" method="POST">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" name="title">
         </div>
-      </section>
-
-    </section>
-  </section>
-    <section class="searchResults">
-
-      <% for(var i=0; i<posts.length; i++) {%>
-
-        <section class="screenPost z-depth-3"><a href="/post/<%= posts[i]._id%>">
-            <p class="screenPostCap">
-              <%= posts[i].caption %>
-            </p>
-            <section class="screenPostImg"><img class="img-fluid" src="<%= posts[i].image%>"></section>
-          </a>
-
-        </section>
-
-        <% } %>
-
-    </section>
-
-
+        <div class="mb-3">
+          <label for="caption" class="form-label">Caption</label>
+          <textarea class="form-control" id="caption" name="caption"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="imgUpload" class="form-label">Image</label>
+          <input type="file" class="form-control" id="imageUpload" name="file">
+        </div>
+        <div class="mb-3">
+          <label for="gameId" class="gameId" id="gameId" style="visibility: hidden;">
+            <%= games[0].id %>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+      </form>
     </div>
-
-
-
-    <footer>
-
-    </footer>
-
+    
   </section>
+
+</section>
+<section class="searchResults">
+
+  <% for(var i=0; i<posts.length; i++) {%>
+
+    <section class="screenPost rnd z-depth-3"><a href="/post/<%= posts[i]._id%>">
+        <p class="screenPostCap">
+          <%= posts[i].title %>
+        </p>
+        <section class="screenPostImg"><img class="img-fluid" src="<%= posts[i].image%>"></section>
+      </a>
+      <span class="screenPostCap"><%=posts[i].caption %></span>
+    </section>
+
+    <% } %>
+
+</section>
+
+
+
+
+
+
+
+</section>
+</section>
+    
+   
+  <footer>
+
+  </footer>
   <script src="/js/main.js"></script>
 </body>
 
