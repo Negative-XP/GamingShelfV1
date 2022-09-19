@@ -1,6 +1,7 @@
 const Todo = require('../models/Todo'); //Shows the path to the Todo schema
 const fetch = require('cross-fetch');
 const axios = require('axios')
+const Post = require("../models/Post");
 console.log('Im being accessed')
 module.exports = {
   getDashboard: async (req, res) => {
@@ -57,6 +58,9 @@ module.exports = {
     const id = req.params.id.split(',')[1]
     const title = req.params.id.split(',')[0]
    console.log('response', req.params.id)
+
+    const posts = await Post.find({gameId: id}).sort({ createdAt: "desc" }).lean();
+
    const response = await axios({
     method: "POST",
     url: "https://api.igdb.com/v4/games",
@@ -69,8 +73,8 @@ module.exports = {
           data: `search "${title}";` + "fields name, id, platforms.*, artworks.*, cover.*, screenshots.*, summary; limit 19;",
         })
         .then((response) => {
-          console.log(id)
-                    res.render(`game.ejs`, { games: response.data.filter(x => x.id == id),  user: req.user, id: id});
+          console.log(posts)
+                    res.render(`game.ejs`, { games: response.data.filter(x => x.id == id),  user: req.user, id: id,posts: posts});
                     
                   })
                 .catch((err) => {
@@ -127,21 +131,7 @@ module.exports = {
     } catch (err) {
       console.log(err);
     }
-  },
-//
-  createTodo: async (req, res) => {
-    //Create async functio
-    try {
-      await Todo.create({
-        todo: req.body.todoItem,
-        userId: req.user.id,
-      }); //create  new item, set it to incomplete by default and to assign it the user's id
-      console.log('Todo has been added!'); //console log that we completed it
-      res.redirect('/todos'); //reload the page
-    } catch (err) {
-      console.log(err); //If there is an error, log the error
-    }
-  },
+  },//
   markComplete: async (req, res) => {
     //Put request to update the item as complete
     try {

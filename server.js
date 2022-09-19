@@ -9,8 +9,9 @@ const logger = require('morgan');
 const connectDB = require('./config/database');
 const mainRoutes = require('./routes/main');
 const dashboardRoutes = require('./routes/dashboard');
+const userRoutes = require(`./routes/user`)
 const axios = require('axios').default
- 
+const postRoutes = require(`./routes/post`)
 require('dotenv').config({ path: './config/.env' });
 
 // Passport config
@@ -43,7 +44,8 @@ app.use(flash());
 
 app.use('/', mainRoutes);
 app.use('/dashboard', dashboardRoutes);
-
+app.use('/user', userRoutes);
+app.use('/post',postRoutes)
 app.listen(process.env.PORT, () => {
   console.log(
     `Server is running on port ${process.env.PORT}, you better catch it!`

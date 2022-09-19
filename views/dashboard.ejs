@@ -4,14 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Favorite Movies</title>
+    <title>Dashboard</title>
     <script src="https://kit.fontawesome.com/bbc193bfe3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/style.css" />
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <link rel="stylesheet" href="/css/style.css" />
+             
   </head>
   <body>
     <header>
       <section class="headerWrapper">
-        <span class="logo"><a href="/">GS</a></span>
+        <span class="logo"><a href="/user/myProfile"><%= user.userName[0]%></a></span>
         <h1>Gaming Shelf</h1>
         <span class="logout"><a href="/logout">Logout</a></span>
       </section>
@@ -28,7 +32,7 @@
         <input
           class="movieName"
           type="text"
-          placeholder="Movie Name"
+          placeholder="Game Name"
           name="userSearch"
         /><br>
         <input type="submit" class="movieSubmit" />
@@ -36,18 +40,13 @@
     </section>
     <section class="searchResults">
       <% games.forEach( el => { %>
-      <section class="todoItem" data-id="<%=el.id%>">
-        <section class="card">
-          <section class="searchImage">
-                      <a href ="/dashboard/game/<%=[el.name, el.id]%>" method="get"><img class="mPoster" src = <%=`https://images.igdb.com/igdb/image/upload/t_cover_big/${el.cover == undefined ? el.cover = '/null' : el.cover.image_id}.png`%> ></a>
+      <section data-id="<%=el.id%>">
+        <section class="dCard">
+          <section class="searchImage ">
+                      <a href ="/dashboard/game/<%=[el.name, el.id]%>" method="get"><img class="mPoster z-depth-3" src = <%=`https://images.igdb.com/igdb/image/upload/t_cover_big/${el.cover == undefined ? el.cover = '/null' : el.cover.image_id}.png`%> ></a>
         </section>
           <span class="mName"><%=  el.name.length > 20 ? el.name.slice(0,32) + '...' : el.name  %></span>
-          <section class="feedback">
-            <!-- <%= el.poster_path == null ? el.poster_path = '/null' : el.poster_path%> -->
-            <span class="mFav"><a href="/todos/favorites/<%=[el.name, el.id, el.poster_path.slice(1,el.poster_path.length)]%>" method='POST'><i class="fa-solid fa-heart"></i></a></span> 
-            <!-- The above code send the title, posterpath with the '/' removed, and the id to the server as an array, but actually a string -->
-            <span class="mLike">Like</span>
-          </section>
+      
         </section>
       </section>
       <% }) %>

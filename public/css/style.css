@@ -1,15 +1,18 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
 * {
   box-sizing: border-box;
 }
 /* CSS FOR HTML ELEMENTS */
 
 body {
-  background-color: rgb(40, 40, 48);
-  background-image: url('/Assets/Pictures/kindpng_1133195.png');
+  background-color: #48444a;
   padding: 0;
   margin: 0;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ font-family: 'Prompt', sans-serif;
+
 }
 
 h1 {
@@ -56,10 +59,18 @@ li {
   padding: 0;
 }
 
+footer{
+  height: 7em;
+  margin: 5% 0%;
+  background-color:  rgb(31, 31, 37);
+}
+
 /* Wrappers */
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
+
+  height: auto;
 }
 
 .headerWrapper {
@@ -79,7 +90,7 @@ header {
   height: 6rem;
   width: 100%;
   text-align: center;
-  margin: 0% 0% 4% 0%;
+  margin: 0% 0% 1% 0%;
 }
 
 .centerIndex {
@@ -118,9 +129,10 @@ input {
   display: flex;
   flex-flow: wrap;
   width: 100%;
+  justify-content: space-evenly;
 }
 
-.card {
+.dCard {
   display: flex;
   flex-direction: column;
   width: 200px;
@@ -133,7 +145,7 @@ input {
 img {
   display: inline-block;
   width: 100%;
-  height: 275px;
+  height: 245px;
   object-fit: contain;
   background-color: rgb(31,31,37)
 }
@@ -190,23 +202,30 @@ img {
  height: 80%;
 }
 
-.favBottom{
-  height: 100%;
-  width: 100;
-
+.block {
+  width: 100%;
+  text-align: center;
+  display: flex;
 }
 
-.titleFav{
-  height: 3em;
+
+.imageWrapper{
   width: auto;
 
-  display: inline block
+  display: block;
+  border-radius: 5px;
 }
 
-.del:hover{
-  color: red;
-  text-decoration: underline;
+.titleWrapper{
+ 
+  margin: 0% 5%;
+  width: 70%;
+  text-overflow: ellipsis;
+  white-space: no wrap;
+  padding: 0%
 }
+
+/* Game Page */
 
 .gHeader{
   display: flex;
@@ -235,29 +254,37 @@ z-index: 1;
 .gDataChunk{
   display: flex;
   color: white;
+  width: 100%;
+  height: auto;
+  border: white solid 1px;
+}
+
+
+.Info{
+  background-color:  rgb(31, 31, 37) ;
+  padding: 2%;
+  border-radius: 10px;
+  border: white 1px solid;
+  width: 100%;
+  clear: both;
 }
 
 .gSummary{
   display: inline-block;
   color: white;
-  width: 70%;
+  width: 30%;
   margin: 2.5%;
-  
+   
 }
-
-.gInfo{
-  width: 20%;
-
-  float: left;
+.gPlatform{
+  width: 200px;
+  height: auto; float: left;
+ 
   color: white;
   margin: 2.5%;
+  display: block;
 }
 
-.Info{
-  background-color:  rgb(31, 31, 37) ;
-  padding: 5%;
-  border-radius: 10px;
-}
 .test{
   display: inline-block;
   width: 100%;
@@ -266,24 +293,33 @@ z-index: 1;
   height: 400px;
  margin: 0%;
   padding-top: 10%;
+
+}
+.screenPost{
+  background-color:  rgb(31, 31, 37); 
+  width: 30em;
+  padding: 1% 0%;
 }
 
-.gOverride{
-  margin: 0% 0% 0% 0%;
+.screenPostImg{
+  padding: 3%;
 }
 
-.imageWrapper{
-  width: auto;
-
-  display: block;
-  border-radius: 5px;
+.screenPostCap{
+  padding: 3%;
+  text-align: center;
 }
 
-.titleWrapper{
- 
-  margin: 0% 5%;
-  width: 70%;
-  text-overflow: ellipsis;
-  white-space: no wrap;
-  padding: 0%
+.formSubmit{
+  width: 50%;
+  margin: 5%;
+  clear: both;
+  display: inline-block;
+}
+
+.gWrapper{
+  max-width: 1600px;
+  margin: 0 auto;
+
+  height: auto;
 }
