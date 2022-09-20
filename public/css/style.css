@@ -1,17 +1,17 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 
 * {
   box-sizing: border-box;
 }
+
 /* CSS FOR HTML ELEMENTS */
 
 body {
   background-color: #48444a;
   padding: 0;
   margin: 0;
- font-family: 'Prompt', sans-serif;
+  font-family: 'Prompt', sans-serif;
 
 }
 
@@ -51,6 +51,19 @@ a:active {
   text-decoration: underline;
 }
 
+input:focus {
+  border-bottom: 1px solid purple !important;
+  box-shadow: 0 1px 0 0 purple !important;
+}
+
+button:hover{
+  background-color: #9224A8 !important;
+}
+
+button{
+  background-color: #661976 !important;
+}
+
 ul,
 li {
   list-style-type: none;
@@ -59,10 +72,11 @@ li {
   padding: 0;
 }
 
-footer{
+footer {
   height: 7em;
   margin: 20% 0% 0% 0%;
-  background-color:  rgb(31, 31, 37);
+  background-color: rgb(31, 31, 37);
+  width: 100%;
 }
 
 /* Wrappers */
@@ -79,7 +93,7 @@ footer{
   height: 100%;
   width: 100%;
   max-width: 1200px;
-  margin:  auto;
+  margin: auto;
   justify-content: space-between;
   align-items: center;
 }
@@ -90,7 +104,7 @@ header {
   height: 6rem;
   width: 100%;
   text-align: center;
-  margin: 0% 0% 1% 0%;
+  margin: 0% 0% .25% 0%;
 }
 
 .centerIndex {
@@ -147,12 +161,11 @@ img {
   width: 100%;
   height: 245px;
   object-fit: contain;
-  background-color: rgb(31,31,37)
+  background-color: rgb(31, 31, 37)
 }
 
 .mName {
   color: white;
-
   height: 80%;
 }
 
@@ -183,12 +196,12 @@ img {
 }
 
 
-.headerTitle{
+.headerTitle {
   width: 100%;
   text-align: center;
 }
 
-.searchBar{
+.searchBar {
   width: 100%;
   text-align: center;
   justify-content: center;
@@ -197,9 +210,9 @@ img {
   align-items: center;
 }
 
-.searchImage{
- width: 100%;
- height: 80%;
+.searchImage {
+  width: 100%;
+  height: 80%;
 }
 
 .block {
@@ -209,15 +222,15 @@ img {
 }
 
 
-.imageWrapper{
+.imageWrapper {
   width: auto;
 
   display: block;
   border-radius: 5px;
 }
 
-.titleWrapper{
- 
+.titleWrapper {
+
   margin: 0% 5%;
   width: 70%;
   text-overflow: ellipsis;
@@ -227,21 +240,21 @@ img {
 
 /* Game Page */
 
-.gHeader{
+.gHeader {
   display: flex;
   align-items: baseline;
-z-index: 1;
+  z-index: 1;
   width: 100%;
 
 }
 
-.gCover{
+.gCover {
   display: inline;
   width: auto;
   height: auto;
 }
 
-.gTitle{
+.gTitle {
   display: inline;
   margin: 0% 0%;
   font-size: 3em;
@@ -251,33 +264,34 @@ z-index: 1;
 
 }
 
-.gDataChunk{
-  display: inline-block
+.gDataChunk {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
   color: white;
   width: 30%;
   height: auto;
-  border: white solid 1px;
 }
 
 
-.Info{
-  background-color:  rgb(31, 31, 37) ;
+.Info {
+  background-color: rgb(31, 31, 37);
   padding: 2%;
   border-radius: 10px;
-  border: white 1px solid;
+
   width: 100%;
 
 }
 
-.gSummary{
-  display: inline-block;
+.gSummary {
+  display: flex;
   color: white;
   width: 95%;
   margin: 2.5%;
   height: auto;
 }
-.gPlatform{
-  display: inline-block;
+
+.gPlatform {
   width: 95%;
   color: white;
   margin: 2.5%;
@@ -286,51 +300,98 @@ z-index: 1;
 
 }
 
-.gTop{
-  border: solid pink 1px;
-display: flex;}
+.gTop {
+  display: flex;
+  flex-flow: row wrap;
+}
 
-.test{
+.test {
   display: inline-block;
   width: 100%;
   z-index: 0;
-  background-color:  rgb(31, 31, 37);
+  background-color: rgb(31, 31, 37);
   height: 400px;
- margin: 0%;
-  padding-top: 10%;
+  margin: 0%;
+  padding-top: 8%;
 
 }
-.screenPost{
-  background-color:  rgb(31, 31, 37); 
-  width: 30em;
-  padding: 1% 0%;
-}
 
-.screenPostImg{
-  padding: 3%;
-}
-
-.screenPostCap{
-  padding: 3%;
-  text-align: center;
+.formSubmit {
   width: 100%;
-}
-
-.formSubmit{
-  width: 50%;
   margin: 5%;
-  clear: both;
-  display: inline-block;
+
+
 }
 
-.gWrapper{
+.gWrapper {
   max-width: 1600px;
   margin: 0 auto;
 
   height: auto;
 }
 
-.rnd{
-  border: solid 1px rgb(47, 47, 54);
-  border-radius: 5%;
+.rnd {
+  border-radius: 20px;
+}
+
+.submitSection {
+  width: 50%;
+
+  height: auto;
+  display: flex;
+}
+
+.gPosts {
+  margin: 3%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  width: 100%;
+
+}
+
+/* Any img tiles */
+.screenPost {
+  background-color: rgb(31, 31, 37);
+  width: 30em;
+  padding: 0% 0%;
+}
+
+.screenPostImg {
+  padding: 3%;
+}
+
+.screenPostCap {
+  padding: 3%;
+  text-align: center;
+  width: 100%;
+}
+
+.screenPostUser{
+  text-align: center;
+  background-color: #2E2E38 ;
+  margin: 0%;
+  border-radius: 20px 20px 0px 0px;
+}
+
+
+
+
+/* mobile */
+
+@media only screen and (max-width: 600px) {
+  body {
+width: 100%;  
+}
+header{
+  width: 100%;
+}
+
+.gDataChunk{
+  width: 100%;
+}
+.submitSection{
+  width: 100%;
+}
+
 }

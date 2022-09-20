@@ -7,7 +7,7 @@ router.get('/', ensureAuth, searchController.getDashboard); //Shows the path to 
 
 router.get('/searchAPI', searchController.getResults);//shows the path to the controller to fetch the API results.
 // router.post(`/searchDatabase`, searchController.searchDatabase)
-router.get('/favorites/:id', searchController.favorites);
+
 
 router.get('/game/:id',searchController.game)
 

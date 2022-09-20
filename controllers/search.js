@@ -3,6 +3,8 @@ const fetch = require('cross-fetch');
 const axios = require('axios')
 const Post = require("../models/Post");
 console.log('Im being accessed')
+
+const User = require('../models/User')
 module.exports = {
   getDashboard: async (req, res) => {
     //getTodos async function
@@ -60,7 +62,7 @@ module.exports = {
    console.log('response', req.params.id)
 
     const posts = await Post.find({gameId: id}).sort({ createdAt: "desc" }).lean();
-
+    let users = await User.find()
    const response = await axios({
     method: "POST",
     url: "https://api.igdb.com/v4/games",
@@ -73,9 +75,9 @@ module.exports = {
           data: `search "${title}";` + "fields name, id, platforms.*, artworks.*, cover.*, screenshots.*, summary; limit 19;",
         })
         .then((response) => {
-          console.log(posts)
-                    res.render(`game.ejs`, { games: response.data.filter(x => x.id == id),  user: req.user, id: id,posts: posts});
-                    
+     
+                    res.render(`game.ejs`, {users: users, games: response.data.filter(x => x.id == id),  user: req.user, id: id,posts: posts});
+                    console.log(users)
                   })
                 .catch((err) => {
                     console.error(err)
@@ -115,23 +117,7 @@ module.exports = {
 
 //
 //
-  favorites: async (req, res) => {
-    try{
-      const movID = req.params.id.split(',')[0] //Splits the received string into an array and grabs the 0 index
-      const movPoster = req.params.id.split(',')[2] //Splits the received string into an array and grabs the 2 index
-      const movName = req.params.id.split(',')[1] //Splits the received string into an array and grabs the 1 index
-      await Todo.create({
-        movID: req.params.id.split(',')[1],  //Splits the received string into an array and grabs the 0 index
-        userId: req.user.id,
-        movName: req.params.id.split(',')[0], //Splits the received string into an array and grabs the 1 index
-        movPoster: req.params.id.split(',')[2], //Splits the received string into an array and grabs the 2 index
-      });
-      res.redirect('/todos'); //reload the page
-      console.log(`Added your movie: ${movID} ${movPoster} ${movName}, User: ${req.user.id}!`)
-    } catch (err) {
-      console.log(err);
-    }
-  },//
+  
   markComplete: async (req, res) => {
     //Put request to update the item as complete
     try {
