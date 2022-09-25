@@ -1,58 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <script src="https://kit.fontawesome.com/bbc193bfe3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/style.css" />
-     <!-- Compiled and minified CSS -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-     <link rel="stylesheet" href="/css/style.css" />
-             
-  </head>
-  <body>
-    <header>
-      <section class="headerWrapper">
-        <span class="logo"><a href="/user/myProfile"><%= user.userName[0]%></a></span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <script src="https://kit.fontawesome.com/bbc193bfe3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/style.css" />
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/style.css" />
+
+</head>
+
+<body>
+  <header>
+    <section class="headerWrapper">
+      <a href="/user/myProfile" class="userIcon">
+        <i class="fa-solid fa-circle-user userIcon"></i>
+      </a> <a href="/dashboard">
         <h1>Gaming Shelf</h1>
-        <span class="logout"><a href="/logout">Logout</a></span>
-      </section>
-    </header>
-    <section class="wrapper">
-      <section class = 'headerTitle'><h2>
-        Hello <%= user.userName %>, please search for a game to add to your
-        favorites.
-      </h2>
-    </section>
+      </a>
       
-    <section class ='searchBar'>
+      <span class="logout"><a href="/logout">Logout</a></span>
+    </section>
+  </header>
+  <section class="wrapper">
+    <section class='headerTitle'>
+      <h2>
+        Hello <%= user.userName %>, please search for a game to see users posts, and add your own!
+    </section>
+
+    <section class='searchBar'>
       <form action="/dashboard/searchAPI" method="get">
-        <input
-          class="movieName"
-          type="text"
-          placeholder="Game Name"
-          name="userSearch"
-        /><br>
+        <input class="movieName" type="text" placeholder="Game Name" name="userSearch" /><br>
         <input type="submit" class="movieSubmit" />
       </form>
     </section>
     <section class="searchResults">
-      <% games.forEach( el => { %>
-      <section data-id="<%=el.id%>">
-        <section class="dCard">
-          <section class="searchImage ">
-                      <a href ="/dashboard/game/<%=[el.name, el.id]%>" method="get"><img class="mPoster z-depth-3" src = <%=`https://images.igdb.com/igdb/image/upload/t_cover_big/${el.cover == undefined ? el.cover = '/null' : el.cover.image_id}.png`%> ></a>
+      <% games.forEach( el=> { %>
+        <section data-id="<%=el.id%>">
+          <section class="dCard">
+            <section class="searchImage ">
+              <a href="/dashboard/game/<%=[el.name, el.id]%>" method="get"><img class="mPoster z-depth-3"
+                  src=<%=`https://images.igdb.com/igdb/image/upload/t_cover_big/${el.cover==undefined ? el.cover='/null'
+                  : el.cover.image_id}.png`%> ></a>
+            </section>
+            <span class="mName">
+              <%= el.name.length> 20 ? el.name.slice(0,32) + '...' : el.name %>
+            </span>
+
+          </section>
         </section>
-          <span class="mName"><%=  el.name.length > 20 ? el.name.slice(0,32) + '...' : el.name  %></span>
-      
-        </section>
-      </section>
-      <% }) %>
+        <% }) %>
     </section>
-   
-    </section>
-    <script src="/js/main.js"></script>
-  </body>
+
+  </section>
+  <script src="/js/main.js"></script>
+</body>
+
 </html>

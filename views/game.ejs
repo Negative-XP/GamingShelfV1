@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%= console.log(games) %>
   <title>
     <%=games[0].name %>
   </title>
@@ -18,15 +19,17 @@
 <body>
   <header>
     <section class="headerWrapper">
-      <span class="logo"><a href="/user/myProfile">
-          <%= user.userName[0]%>
-        </a></span>
-      <h1>Gaming Shelf</h1>
+      <a href="/user/myProfile" class="userIcon">
+        <i class="fa-solid fa-circle-user userIcon"></i>
+      </a>
+      <a href="/dashboard">
+        <h1>Gaming Shelf</h1>
+      </a>
       <span class="logout"><a href="/logout">Logout</a></span>
     </section>
   </header>
   <section class="test"
-    style=<%=`background-image:url(//images.igdb.com/igdb/image/upload/t_1080p/${games[0].screenshots[0].image_id}.png);background-size:cover;`%>
+    style=<%=`background-image:url(//images.igdb.com/igdb/image/upload/t_1080p/${ games[0].screenshots == undefined ? "/null" : games[0].screenshots[0].image_id}.png);background-size:cover;`%>
     >
     <section class="gWrapper">
       <section class="gHeader">
@@ -44,25 +47,61 @@
       <section class="gTop">
         <section class="gDataChunk">
           <section class="gPlatform Info z-depth-3">
-            <% games[0].platforms.forEach(el=> { %>
+            <% games[0].platforms == undefined ? games[0].platforms = 'unknown' :  games[0].platforms.forEach(el=> { %>
               <p>
-                <%= el.alternative_name %>
+                <%=  games[0].platforms == undefined ? 'unknown' : el.alternative_name %>
               </p>
               <%})%>
           </section>
 
           <section class="gSummary Info z-depth-3">
             <p>
-              <%=games[0].summary%>
+              <%= games[0].summary ==undefined ? "No Summary Available" : games[0].summary%>
             </p>
           </section>
 
 
 
         </section>
+        
+        <section class="gPosts">
+         
 
+          <% if(posts.length == 0){  %> 
+            <section class="gPostHeader gNoPosts rnd"><p>No one has posted for this game yet... <br> Be the first!</p></section>
+            <% }else{ %>
 
+              <div class="gPostHeader rnd"> <H1>POSTS</H1></div>
 
+              <% } %> 
+          <% for(var i=0; i<posts.length; i++) {%>
+  
+            <section class="screenPost rnd z-depth-3">
+              <section class="screenPostUser rnd">
+  
+                <a href="/user/<%= posts[i].user %>">
+                  <P class="screenPostUser rnd">
+                    <%= posts[i].userName%>
+                  </P>
+                </a>
+              </section>
+              <a href="/post/<%= posts[i]._id%>">
+  
+                <p class="screenPostCap">
+                  <%= posts[i].title %>
+  
+                </p>
+  
+                <section class="screenPostImg"><img class="img-fluid" src="<%= posts[i].image%>"></section>
+              </a>
+              <span class="screenPostCap">
+                <%=posts[i].caption %>
+              </span>
+            </section>
+  
+            <% } %>
+  
+        </section>
 
 
         <section class="submitSection">
@@ -96,32 +135,7 @@
       </section>
 
 
-      <section class="gPosts">
-
-        <% for(var i=0; i<posts.length; i++) {%>
-
-          <section class="screenPost rnd z-depth-3">
-            <section  class="screenPostUser rnd">
-          
-            <a href="/user/<%= users.find(el => el.id == posts[i].user).id%>"><P class="screenPostUser rnd">  <%= users.find(el => el.id == posts[i].user).userName%></P></a>
-            </section>
-            <a href="/post/<%= posts[i]._id%>">
-             
-            <p class="screenPostCap">
-                <%= posts[i].title %>
-              
-              </p>
-              
-              <section class="screenPostImg"><img class="img-fluid" src="<%= posts[i].image%>"></section>
-            </a>
-            <span class="screenPostCap">
-              <%=posts[i].caption %>
-            </span>
-          </section>
-
-          <% } %>
-
-      </section>
+     
 
 
 
@@ -130,9 +144,6 @@
   </section>
 
 
-  <footer>
-
-  </footer>
   <script src="/js/main.js"></script>
 </body>
 

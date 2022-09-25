@@ -94,14 +94,14 @@ footer {
   width: 100%;
   max-width: 1200px;
   margin: auto;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
 /* Header Styles */
 header {
   background-color: rgb(31, 31, 37);
-  height: 6rem;
+  height: 5rem;
   width: 100%;
   text-align: center;
   margin: 0% 0% .25% 0%;
@@ -117,14 +117,18 @@ header {
   display: inline-block;
   background-color: white;
   line-height: 75px;
-  height: 75px;
-  width: 75px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
+
+  text-align: center;
+
 }
 
-.logo a {
-  color: black;
-  font-weight: bold;
+.userIcon{
+ 
+  
+  font-size: 2em;
 }
 
 /* Form Styles */
@@ -212,7 +216,7 @@ img {
 
 .searchImage {
   width: 100%;
-  height: 80%;
+  height: 70%;
 }
 
 .block {
@@ -250,8 +254,10 @@ img {
 
 .gCover {
   display: inline;
-  width: auto;
-  height: auto;
+  
+  background-color: rgb(31, 31, 37);
+  width: 225px;
+  height: 300px;
 }
 
 .gTitle {
@@ -270,7 +276,8 @@ img {
   flex-flow: row wrap;
   color: white;
   width: 30%;
-  height: auto;
+  height: 500PX;
+  padding: 2%;
 }
 
 
@@ -295,9 +302,10 @@ img {
   width: 95%;
   color: white;
   margin: 2.5%;
-
+  display: flex;
+  justify-content: space-between;
   height: auto;
-
+  flex-flow: row wrap;
 }
 
 .gTop {
@@ -316,9 +324,37 @@ img {
 
 }
 
+.gPostHeader{
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(31, 31, 37);
+}
+
+.gNoPosts{
+  color: white;
+  margin: 3%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.gNoPosts p{
+  margin: auto;
+  width: auto;
+  height: auto;
+  
+}
+
+
+.gPostsProfileView{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
 .formSubmit {
   width: 100%;
-  margin: 5%;
 
 
 }
@@ -335,19 +371,20 @@ img {
 }
 
 .submitSection {
-  width: 50%;
+  width: 30%;
+  padding: 2%;
 
-  height: auto;
+  height: 500PX;
   display: flex;
 }
 
 .gPosts {
-  margin: 3%;
+ 
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
-  width: 100%;
-
+  justify-content: space-around;
+  width: 40%;
+  padding: 2.5%;
 }
 
 /* Any img tiles */
@@ -355,6 +392,7 @@ img {
   background-color: rgb(31, 31, 37);
   width: 30em;
   padding: 0% 0%;
+  margin: 1%;
 }
 
 .screenPostImg {
@@ -373,6 +411,52 @@ img {
   margin: 0%;
   border-radius: 20px 20px 0px 0px;
 }
+
+
+/* Post View */
+.postView{
+  background-color: #1F1F25;
+  margin: 0% 3%;
+}
+.postViewTitle{
+  margin: 0%;
+}
+.postViewUserName{
+  color: white;
+  margin: 1% 5%;
+  height: auto;
+}
+
+.postViewImg{
+  height: 100%;
+  width: 100%;
+
+}
+.postViewImgWrapper{
+ 
+  width: auto;
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+  height: 80%;
+}
+
+.postViewComments{
+ width: 30%;
+ height: 100%;
+margin: 0% 3%;
+background-color: #1F1F25;
+}
+
+.postWrapper{
+
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  box-sizing: border-box;
+}
+
+
 
 
 

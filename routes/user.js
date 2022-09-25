@@ -7,4 +7,6 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth') //Shows the pa
 
 router.get('/myProfile', userRoutes.myProfile) //default 
 //
+router.get('/:id', userRoutes.userProfile)
+
 module.exports = router

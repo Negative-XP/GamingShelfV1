@@ -41,7 +41,7 @@ module.exports = {
                 "Authorization": `${process.env.accessToken}`,
             },
             
-            data: `search "${title}";` + "fields id, category, name, cover.*, artworks, summary, screenshots.url; where category = (0,8,9); limit 18; ",
+            data: `search "${title}";` + "fields id, category, name, cover.*, artworks, summary, screenshots.url; where category = (0); limit 18; ",
           })
           .then((response) => {
             response.data.forEach(n => console.log(n))
@@ -62,7 +62,6 @@ module.exports = {
    console.log('response', req.params.id)
 
     const posts = await Post.find({gameId: id}).sort({ createdAt: "desc" }).lean();
-    let users = await User.find()
    const response = await axios({
     method: "POST",
     url: "https://api.igdb.com/v4/games",
@@ -76,8 +75,8 @@ module.exports = {
         })
         .then((response) => {
      
-                    res.render(`game.ejs`, {users: users, games: response.data.filter(x => x.id == id),  user: req.user, id: id,posts: posts});
-                    console.log(users)
+                    res.render(`game.ejs`, {games: response.data.filter(x => x.id == id),  user: req.user, id: id,posts: posts});
+  
                   })
                 .catch((err) => {
                     console.error(err)

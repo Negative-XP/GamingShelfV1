@@ -21,6 +21,23 @@ module.exports = {
       }
     },
    
+    userProfile: async (req, res) => {
+      //getTodos async function
+      console.log(req.user); //Console logs the user
+      
+      try {
+        const posts = await Post.find({ user: req.params.id });
+        
+        //Find all of items in the database that aren't completed that match the user id
+        res.render('user.ejs', {
+          user: req.user,
+          userProfile: req.params.id,
+          posts: posts,
+        }); //Renders all the todoItems, all the items that are marked incomplete, and the users name
+      } catch (err) {
+        console.log(err); //If there is an error, return the error
+      }
+    },
    
      
   

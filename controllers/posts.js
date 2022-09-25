@@ -38,6 +38,7 @@ module.exports = {
         cloudinaryId: result.public_id,
         gameId: req.params.id,
         caption: req.body.caption,
+        userName: req.user.userName,
         likes: 0,
         user: req.user.id,
       });
