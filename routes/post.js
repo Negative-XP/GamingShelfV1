@@ -10,6 +10,6 @@ router.post("/createPost/:id", upload.single("file"), postsController.createPost
 
 router.put("/likePost/:id", postsController.likePost);
 
-router.delete("/deletePost/:id", postsController.deletePost);
+router.get("/delete/:id", postsController.deletePost);
 
 module.exports = router;

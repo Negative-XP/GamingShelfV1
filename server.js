@@ -12,6 +12,7 @@ const dashboardRoutes = require('./routes/dashboard');
 const userRoutes = require(`./routes/user`)
 const axios = require('axios').default
 const postRoutes = require(`./routes/post`)
+const methodOverride = require('method-override')
 require('dotenv').config({ path: './config/.env' });
 
 // Passport config
@@ -24,6 +25,10 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger('dev'));
+app.use(methodOverride('_method'))
+app.use(methodOverride('X-HTTP-Method')) //          Microsoft
+app.use(methodOverride('X-HTTP-Method-Override')) // Google/GData
+app.use(methodOverride('X-Method-Override')) //      IBM
 // Sessions
 app.use(
   session({
