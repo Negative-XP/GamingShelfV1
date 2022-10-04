@@ -28,6 +28,23 @@ module.exports = {
       console.log(err);
     }
   },
+  createComment: async (req, res) => {
+    try {
+        console.log(req)
+      await Comment.create({
+        comment: req.body.comment,
+        likes: 0,
+        post: req.params.id,
+        user: req.user.userName,
+        userId: req.user.id
+      });
+      console.log("Comment has been added!");
+      res.redirect("/post/" + req.params.id);
+    } catch (err) {
+      console.log(err);
+      console.log(`hello!` + req.params.id)
+    }
+  },
   createPost: async (req, res) => {
     try {
       // Upload image to cloudinary
@@ -49,6 +66,7 @@ module.exports = {
     }
   },
   likePost: async (req, res) => {
+    console.log('talking to me!')
     try {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
@@ -57,7 +75,7 @@ module.exports = {
         }
       );
       console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
+      res.redirect(`back`);
     } catch (err) {
       console.log(err);
     }

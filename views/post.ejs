@@ -41,14 +41,46 @@
         <img class="postViewImg b" src="<%= post.image%>" />
       </section>
       <div class="postViewUserName">
-      <span class="postViewCap b">
-        <%=post.caption %>
-      </span>
+        <section class="screenPostBottom">
+          <section class="screenPostCap">
+            <span>
+              <%=post.caption %>
+            </span>
+          </section>
+          <section class="likes">
+            <a href="/post/likePost/<%= post._id%>"><i class="fa-solid fa-heart"></i></a> <span class="screenPostLikes">
+              <%=post.likes %>
+            </span>
+          </section>
+        </section>
       </div>
     </section>
 
     <section class="postViewComments rnd center">
       <h1>COMMENTS</h1>
+      <div class="mt-5">
+        <h2>Add a Comment</h2>
+        <form action="/post/createComment/<%=post._id%>" method="POST">
+          <div class="mb-3">
+              <label for="comment" class="form-label">Comment</label>
+              <input type="text" class="form-control" id="comment" name="comment">
+          </div>
+          <button type="submit" class="btn btn-primary" >Submit</button>
+        </form>
+      </div>
+      <ul class="row list-unstyled">
+        <% for(var i=0; i<comments.length; i++) {%>
+          <li class="justify-content-left mt-5">
+            <div class="comment rnd z-depth-3"><span><%= comments[i].user %></span>
+           <p><%= comments[i].comment %> </p>
+            </div>
+          </li>
+        <% } %>
+        </ul>
+      
+    </div>
+      </section>
+    </section>
     </section>
   </section>
 </body>

@@ -401,8 +401,8 @@ img {
 
 .screenPostCap {
   padding: 3%;
-  text-align: center;
-  width: 100%;
+  text-align: left;
+  width: 80%;
 }
 
 .screenPostUser{
@@ -412,6 +412,24 @@ img {
   border-radius: 20px 20px 0px 0px;
 }
 
+
+.screenPostBottom{
+  display: flex;
+  justify-content: space-around;
+}
+
+.likes{
+  width: 10%;
+  display: flex; 
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.screenPostLikes{
+  justify-content: center;
+  
+}
 
 /* Post View */
 .postView{
@@ -445,6 +463,7 @@ img {
  width: 30%;
  height: 100%;
 margin: 0% 3%;
+padding: 1%;
 background-color: #1F1F25;
 }
 
@@ -456,8 +475,18 @@ background-color: #1F1F25;
   box-sizing: border-box;
 }
 
+.commentSubmit{
+  width: 100%;
 
+}
 
+.commentSubmit::after{
+  width:100%;
+}
+
+.comment{
+
+}
 
 
 

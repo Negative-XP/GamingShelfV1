@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= console.log(games) %>
-  <title>
-    <%=games[0].name %>
-  </title>
-  <sub class="gameId"></sub>
-  <script src="https://kit.fontawesome.com/bbc193bfe3.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="/css/style.css" />
+    <title>
+      <%=games[0].name %>
+    </title>
+    <sub class="gameId"></sub>
+    <script src="https://kit.fontawesome.com/bbc193bfe3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/style.css" />
 
 </head>
 
@@ -28,8 +28,8 @@
       <span class="logout"><a href="/logout">Logout</a></span>
     </section>
   </header>
-  <section class="test"
-    style=<%=`background-image:url(//images.igdb.com/igdb/image/upload/t_1080p/${ games[0].screenshots == undefined ? "/null" : games[0].screenshots[0].image_id}.png);background-size:cover;`%>
+  <section class="test" style=<%=`background-image:url(//images.igdb.com/igdb/image/upload/t_1080p/${
+    games[0].screenshots==undefined ? "/null" : games[0].screenshots[0].image_id}.png);background-size:cover;`%>
     >
     <section class="gWrapper">
       <section class="gHeader">
@@ -47,60 +47,72 @@
       <section class="gTop">
         <section class="gDataChunk">
           <section class="gPlatform Info z-depth-3">
-            <% games[0].platforms == undefined ? games[0].platforms = 'unknown' :  games[0].platforms.forEach(el=> { %>
+            <% games[0].platforms==undefined ? games[0].platforms='unknown' : games[0].platforms.forEach(el=> { %>
               <p>
-                <%=  games[0].platforms == undefined ? 'unknown' : el.alternative_name %>
+                <%= games[0].platforms==undefined ? 'unknown' : el.alternative_name %>
               </p>
               <%})%>
           </section>
 
           <section class="gSummary Info z-depth-3">
             <p>
-              <%= games[0].summary ==undefined ? "No Summary Available" : games[0].summary%>
+              <%= games[0].summary==undefined ? "No Summary Available" : games[0].summary%>
             </p>
           </section>
 
 
 
         </section>
-        
-        <section class="gPosts">
-         
 
-          <% if(posts.length == 0){  %> 
-            <section class="gPostHeader gNoPosts rnd"><p>No one has posted for this game yet... <br> Be the first!</p></section>
+        <section class="gPosts">
+
+
+          <% if(posts.length==0){ %>
+            <section class="gPostHeader gNoPosts rnd">
+              <p>No one has posted for this game yet... <br> Be the first!</p>
+            </section>
             <% }else{ %>
 
-              <div class="gPostHeader rnd"> <H1>POSTS</H1></div>
+              <div class="gPostHeader rnd">
+                <H1>POSTS</H1>
+              </div>
 
-              <% } %> 
-          <% for(var i=0; i<posts.length; i++) {%>
-  
-            <section class="screenPost rnd z-depth-3">
-              <section class="screenPostUser rnd">
-  
-                <a href="/user/<%= posts[i].user %>">
-                  <P class="screenPostUser rnd">
-                    <%= posts[i].userName%>
-                  </P>
-                </a>
-              </section>
-              <a href="/post/<%= posts[i]._id%>">
-  
-                <p class="screenPostCap">
-                  <%= posts[i].title %>
-  
-                </p>
-  
-                <section class="screenPostImg"><img class="img-fluid" src="<%= posts[i].image%>"></section>
-              </a>
-              <span class="screenPostCap">
-                <%=posts[i].caption %>
-              </span>
-            </section>
-  
-            <% } %>
-  
+              <% } %>
+                <% for(var i=0; i<posts.length; i++) {%>
+
+                  <section class="screenPost rnd z-depth-3">
+                    <section class="screenPostUser rnd">
+
+                      <a href="/user/<%= posts[i].user %>">
+                        <P class="screenPostUser rnd">
+                          <%= posts[i].userName%>
+                        </P>
+                      </a>
+                    </section>
+                    <a href="/post/<%= posts[i]._id%>">
+
+                      <p class="screenPostCap">
+                        <%= posts[i].title %>
+
+                      </p>
+
+                      <section class="screenPostImg"><img class="img-fluid" src="<%= posts[i].image%>"></section>
+                    </a>
+                    <section class="screenPostBottom">
+                      <section class="screenPostCap">
+                        <span>
+                          <%=posts[i].caption %>
+                        </span>
+                      </section>
+                      <section class="likes">
+                        <a href="/post/likePost/<%= posts[i]._id%>"><i class="fa-solid fa-heart"></i></a> <span class="screenPostLikes">
+                          <%=posts[i].likes %>
+                        </span>
+                      </section>
+                    </section>
+                  </section>
+                  <% } %>
+
         </section>
 
 
@@ -135,7 +147,7 @@
       </section>
 
 
-     
+
 
 
 
