@@ -79,6 +79,10 @@ footer {
   width: 100%;
 }
 
+span, p{
+  color: white;
+}
+
 /* Wrappers */
 .wrapper {
   max-width: 1200px;
@@ -94,7 +98,7 @@ footer {
   width: 100%;
   max-width: 1200px;
   margin: auto;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -146,6 +150,7 @@ input {
 .searchResults {
   display: flex;
   flex-flow: wrap;
+  flex-direction: row;
   width: 100%;
   justify-content: space-evenly;
 }
@@ -173,16 +178,6 @@ img {
   height: 80%;
 }
 
-.feedback {
-  display: flex;
-  flex-direction: row;
-  color: white;
-  font-size: 0.6rem;
-  padding: 0 0.5rem;
-  justify-content: space-between;
-  height: 20%;
-}
-
 .Panel {
   width: auto;
   padding: 5em;
@@ -206,12 +201,24 @@ img {
 }
 
 .searchBar {
-  width: 100%;
-  text-align: center;
-  justify-content: center;
+  width: 30%;
+  
   float: left;
   display: flex;
-  align-items: center;
+ 
+}
+
+.movieName{
+  border: white solid;
+  width: 20%;
+  
+}
+
+.movieSubmit{
+  clear: both;
+  width: auto;
+  float: left;
+  border: solid white;
 }
 
 .searchImage {
@@ -355,8 +362,8 @@ img {
 
 .formSubmit {
   width: 100%;
-
-
+  margin: 2.5%;
+float: left;
 }
 
 .gWrapper {
@@ -465,6 +472,7 @@ img {
 margin: 0% 3%;
 padding: 1%;
 background-color: #1F1F25;
+overflow-y:auto;
 }
 
 .postWrapper{
@@ -485,9 +493,21 @@ background-color: #1F1F25;
 }
 
 .comment{
-
+  margin: 1% 0%;
+  color: white;
+  text-align: left;
+  
 }
 
+.commentHeader{
+  background-color: #48444a;
+  border-radius: 20px 20px 0px 0px;
+ 
+}
+
+.comment p, span{
+  padding: 0% 2%;
+}
 
 
 /* mobile */
@@ -499,7 +519,31 @@ width: 100%;
 header{
   width: 100%;
 }
+.test{
+  padding: 30% 0% 0% 0%;
+}
+.gHeader{width: auto;
+  margin: 0%;
+  display: block;
+}
+.gtitle{
+  width: 100%;
+  display: block;
+  margin: 0%;
+  font-size: 1em;
+  text-align: center;
+}
 
+.gCover{
+  margin: auto;
+  text-align: center;
+}
+.titleWrapper, .imageWrapper{
+  text-align: center;
+  padding: none;
+  margin: 0%;
+  width: 100%;
+}
 .gDataChunk{
   width: 100%;
 }
@@ -507,4 +551,43 @@ header{
   width: 100%;
 }
 
+.gTop{
+  flex-direction: row-reverse;
+}
+
+.gPosts{
+  flex: 2;
+
+}
+
+.Info{
+  height: auto;
+  float: left;
+}
+
+.formSubmit{
+  height: 300px;
+}
+
+.postView{
+  width: 100%;
+}
+
+.postViewComments{
+  width: 100%;
+}
+
+.postWrapper{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.postWrapper section{
+  margin: 2%;
+}
+
+.postView{
+  height: auto;
+
+}
 }

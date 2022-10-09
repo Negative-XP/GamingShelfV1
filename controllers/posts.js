@@ -71,7 +71,8 @@ module.exports = {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
         {
-          $inc: { likes: 1 },
+        
+        $push: {'likes': req.user.id}, 
         }
       );
       console.log("Likes +1");

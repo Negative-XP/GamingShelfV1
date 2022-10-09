@@ -16,11 +16,18 @@
         <a href="/user/myProfile" class="userIcon">
           <i class="fa-solid fa-circle-user userIcon"></i>
         </a>
-                  <a href="/dashboard"><h1>Gaming Shelf</h1></a>
+        <a href="/dashboard">
+          <h1>Gaming Shelf</h1>
+        </a>
+      
+          <form action="/dashboard/searchAPI" method="get" class="searchBar">
+            <input class="movieName" type="text" placeholder="Game Name" name="userSearch" /><br>
+            <input type="submit" class="movieSubmit" />
+          </form>
+       
         <span class="logout"><a href="/logout">Logout</a></span>
       </section>
     </header>
-
 
 
     <section class="gPostsProfileView">
@@ -44,14 +51,20 @@
           <span class="screenPostCap">
             <%=posts[i].caption %>
           </span>
+           <% if(user._id.toString() == posts[i].user){ %>
+           <span> delete</span>
+           <% }else{ %>
+           <span>nothing</span>
+
+            <% } %> 
         </section>
-
         <% } %>
-
+       
     </section>
 
 
 
+<%= console.log(user._id)%>
 
   </section>
 </section>

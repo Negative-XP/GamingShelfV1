@@ -25,6 +25,12 @@
       <a href="/dashboard">
         <h1>Gaming Shelf</h1>
       </a>
+    
+        <form action="/dashboard/searchAPI" method="get" class="searchBar">
+          <input class="movieName" type="text" placeholder="Game Name" name="userSearch" /><br>
+          <input type="submit" class="movieSubmit" />
+        </form>
+     
       <span class="logout"><a href="/logout">Logout</a></span>
     </section>
   </header>
@@ -63,9 +69,36 @@
 
 
         </section>
+        <section class="submitSection">
+          <section class="Info formSubmit z-depth-3">
+            <div class="mt-5">
+              <h2>Add a post</h2>
+              <form action="/post/createPost/<%=games[0].id %>" enctype="multipart/form-data" method="POST">
+                <div class="mb-3">
+                  <label for="title" class="form-label">Title</label>
+                  <input type="text" class="form-control" id="title" name="title">
+                </div>
+                <div class="mb-3">
+                  <label for="caption" class="form-label">Caption</label>
+                  <textarea class="form-control" id="caption" name="caption"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="imgUpload" class="form-label">Image</label>
+                  <input type="file" class="form-control" id="imageUpload" name="file">
+                </div>
+                <div class="mb-3">
+                  <label for="gameId" class="gameId" id="gameId" style="visibility: hidden;">
+                    <%= games[0].id %>
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+              </form>
+            </div>
 
+          </section>
+        </section>
         <section class="gPosts">
-
+          
 
           <% if(posts.length==0){ %>
             <section class="gPostHeader gNoPosts rnd">
@@ -106,7 +139,7 @@
                       </section>
                       <section class="likes">
                         <a href="/post/likePost/<%= posts[i]._id%>"><i class="fa-solid fa-heart"></i></a> <span class="screenPostLikes">
-                          <%=posts[i].likes %>
+                          <%=posts[i].likes.length %>
                         </span>
                       </section>
                     </section>
@@ -116,34 +149,7 @@
         </section>
 
 
-        <section class="submitSection">
-          <section class="Info formSubmit z-depth-3">
-            <div class="mt-5">
-              <h2>Add a post</h2>
-              <form action="/post/createPost/<%=games[0].id %>" enctype="multipart/form-data" method="POST">
-                <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
-                </div>
-                <div class="mb-3">
-                  <label for="caption" class="form-label">Caption</label>
-                  <textarea class="form-control" id="caption" name="caption"></textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="imgUpload" class="form-label">Image</label>
-                  <input type="file" class="form-control" id="imageUpload" name="file">
-                </div>
-                <div class="mb-3">
-                  <label for="gameId" class="gameId" id="gameId" style="visibility: hidden;">
-                    <%= games[0].id %>
-                  </label>
-                </div>
-                <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-              </form>
-            </div>
-
-          </section>
-        </section>
+        
       </section>
 
 
@@ -154,8 +160,6 @@
 
     </section>
   </section>
-
-
   <script src="/js/main.js"></script>
 </body>
 
