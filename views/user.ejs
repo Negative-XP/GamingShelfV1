@@ -48,15 +48,22 @@
             
             <section class="screenPostImg"><img class="img-fluid" src="<%= posts[i].image%>"></section>
           </a>
-          <span class="screenPostCap">
-            <%=posts[i].caption %>
-          </span>
-           <% if(user._id.toString() == posts[i].user){ %>
-           <span> delete</span>
-           <% }else{ %>
-           <span>nothing</span>
-
-            <% } %> 
+          <section class="screenPostBottom">
+            <section class="screenPostCap">
+              <span>
+                <%=posts[i].caption %>
+              </span>
+            </section>
+            <section class="likes"> 
+              <% if(user._id.toString() == posts[i].user){ %>
+                <a href="/post/delete/<%= posts[i]._id%>"><i class="fa-solid fa-trash-can"></i>
+               <% }else{ %>
+               <span>nothing</span>
+    
+                <% } %> 
+              </section> 
+          </section>
+          
         </section>
         <% } %>
        

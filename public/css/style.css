@@ -246,7 +246,9 @@ img {
   width: 70%;
   text-overflow: ellipsis;
   white-space: no wrap;
-  padding: 0%
+  padding: 0%;
+  display: flex;
+  justify-content: baseline;
 }
 
 /* Game Page */
@@ -268,12 +270,12 @@ img {
 }
 
 .gTitle {
-  display: inline;
+  display: flex;
   margin: 0% 0%;
   font-size: 3em;
   color: white;
   text-overflow: clip;
-
+  width: 60%;
 
 }
 
@@ -358,6 +360,14 @@ img {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+}
+
+.follow{
+  width: 10%;
+  display: flex;
+  height: 100%;
+ margin: auto;
+ font-weight: 600;
 }
 
 .formSubmit {
@@ -507,6 +517,9 @@ overflow-y:auto;
 
 .comment p, span{
   padding: 0% 2%;
+
+
+  
 }
 
 
@@ -543,6 +556,8 @@ header{
   padding: none;
   margin: 0%;
   width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 .gDataChunk{
   width: 100%;
@@ -564,6 +579,7 @@ header{
   height: auto;
   float: left;
 }
+
 
 .formSubmit{
   height: 300px;

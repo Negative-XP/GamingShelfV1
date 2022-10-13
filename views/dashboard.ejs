@@ -38,12 +38,7 @@
         Hello <%= user.userName %>, please search for a game to see users posts, and add your own!
     </section>
 
-    <section class='searchBar'>
-      <form action="/dashboard/searchAPI" method="get">
-        <input class="movieName" type="text" placeholder="Game Name" name="userSearch" /><br>
-        <input type="submit" class="movieSubmit" />
-      </form>
-    </section>
+   
     <section class="searchResults">
       <% games.forEach( el=> { %>
         <section data-id="<%=el.id%>">

@@ -25,12 +25,12 @@
       <a href="/dashboard">
         <h1>Gaming Shelf</h1>
       </a>
-    
-        <form action="/dashboard/searchAPI" method="get" class="searchBar">
-          <input class="movieName" type="text" placeholder="Game Name" name="userSearch" /><br>
-          <input type="submit" class="movieSubmit" />
-        </form>
-     
+
+      <form action="/dashboard/searchAPI" method="get" class="searchBar">
+        <input class="movieName" type="text" placeholder="Game Name" name="userSearch" /><br>
+        <input type="submit" class="movieSubmit" />
+      </form>
+
       <span class="logout"><a href="/logout">Logout</a></span>
     </section>
   </header>
@@ -48,6 +48,11 @@
           <p class="gTitle">
             <%= games[0].name%>
           </p>
+          <section class="follow">
+            <span class="follow">
+            <a href="/feed/follow/<%=games[0].id %>" method="POST" methodOverride="POST">FOLLOW</a>
+          </span>
+        </section>
         </section>
       </section>
       <section class="gTop">
@@ -62,7 +67,7 @@
 
           <section class="gSummary Info z-depth-3">
             <p>
-              <%= games[0].summary==undefined ? "No Summary Available" : games[0].summary%>
+              <%= games[0].summary== undefined ? "No Summary Available" : games[0].summary%>
             </p>
           </section>
 
@@ -98,7 +103,7 @@
           </section>
         </section>
         <section class="gPosts">
-          
+
 
           <% if(posts.length==0){ %>
             <section class="gPostHeader gNoPosts rnd">
@@ -138,7 +143,8 @@
                         </span>
                       </section>
                       <section class="likes">
-                        <a href="/post/likePost/<%= posts[i]._id%>"><i class="fa-solid fa-heart"></i></a> <span class="screenPostLikes">
+                        <a href="/post/likePost/<%= posts[i]._id%>"><i class="fa-solid fa-heart"></i></a> <span
+                          class="screenPostLikes">
                           <%=posts[i].likes.length %>
                         </span>
                       </section>
@@ -149,7 +155,7 @@
         </section>
 
 
-        
+
       </section>
 
 

@@ -10,6 +10,8 @@ const connectDB = require('./config/database');
 const mainRoutes = require('./routes/main');
 const dashboardRoutes = require('./routes/dashboard');
 const userRoutes = require(`./routes/user`)
+const feedRoutes = require(`./routes/feed`)
+
 const axios = require('axios').default
 const postRoutes = require(`./routes/post`)
 const methodOverride = require('method-override')
@@ -51,6 +53,7 @@ app.use('/', mainRoutes);
 app.use('/dashboard', dashboardRoutes);
 app.use('/user', userRoutes);
 app.use('/post',postRoutes)
+app.use('/feed',feedRoutes)
 app.listen(process.env.PORT, () => {
   console.log(
     `Server is running on port ${process.env.PORT}, you better catch it!`
