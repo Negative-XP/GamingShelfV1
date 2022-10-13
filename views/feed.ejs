@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <script src="https://kit.fontawesome.com/bbc193bfe3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/style.css" />
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/style.css" />
+
+</head>
+
+<body>
+  <header>
+    <section class="headerWrapper">
+      <a href="/user/myProfile" class="userIcon">
+        <i class="fa-solid fa-circle-user userIcon"></i>
+      </a>
+      <a href="/dashboard">
+        <h1>Gaming Shelf</h1>
+      </a>
+    
+        <form action="/dashboard/searchAPI" method="get" class="searchBar">
+          <input class="movieName" type="text" placeholder="Game Name" name="userSearch" /><br>
+          <input type="submit" class="movieSubmit" />
+        </form>
+     
+      <span class="logout"><a href="/logout">Logout</a></span>
+    </section>
+  </header>
+  <section class="wrapper">
+    <section class='headerTitle'>
+      <h2>
+        Hello <%= user.userName %>, please search for a game to see users posts, and add your own!
+    </section>
+
+   
+    <section class="gPosts">
+
+
+        <% if(posts.length==0){ %>
+          <section class="gPostHeader gNoPosts rnd">
+            <p>No one has posted for this game yet... <br> Be the first!</p>
+          </section>
+          <% }else{ %>
+
+            <div class="gPostHeader rnd">
+              <H1>POSTS</H1>
+            </div>
+
+            <% } %>
+              <% for(var i=0; i<posts.length; i++) {%>
+
+                <section class="screenPost rnd z-depth-3">
+                  <section class="screenPostUser rnd">
+
+                    <a href="/user/<%= posts[i].user %>">
+                      <P class="screenPostUser rnd">
+                        <%= posts[i].userName%>
+                      </P>
+                    </a>
+                  </section>
+                  <a href="/post/<%= posts[i]._id%>">
+
+                    <p class="screenPostCap">
+                      <%= posts[i].title %>
+
+                    </p>
+
+                    <section class="screenPostImg"><img class="img-fluid" src="<%= posts[i].image%>"></section>
+                  </a>
+                  <section class="screenPostBottom">
+                    <section class="screenPostCap">
+                      <span>
+                        <%=posts[i].caption %>
+                      </span>
+                    </section>
+                    <section class="likes">
+                      <a href="/post/likePost/<%= posts[i]._id%>"><i class="fa-solid fa-heart"></i></a> <span
+                        class="screenPostLikes">
+                        <%=posts[i].likes.length %>
+                      </span>
+                    </section>
+                  </section>
+                </section>
+                <% } %>
+
+      </section>
+
+  </section>
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

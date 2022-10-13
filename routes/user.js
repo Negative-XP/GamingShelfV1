@@ -5,8 +5,8 @@ const homeController = require('../controllers/home') //Shows the path to the ho
 const userRoutes = require('../controllers/user')
 const { ensureAuth, ensureGuest } = require('../middleware/auth') //Shows the path to auth
 
-// router.get('/myProfile', userRoutes.getFeed) //default 
-// //
-// router.get('/:id', userRoutes.createFollow)
+router.get('/myProfile', userRoutes.myProfile) //default 
+//
+router.get('/:id', userRoutes.userProfile)
 
 module.exports = router
