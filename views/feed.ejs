@@ -11,11 +11,12 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="/css/style.css" />
-
+  
 </head>
 
 <body>
   <header>
+    <%= console.log(posts)%>
     <section class="headerWrapper">
       <a href="/user/myProfile" class="userIcon">
         <i class="fa-solid fa-circle-user userIcon"></i>
@@ -82,7 +83,7 @@
                     <section class="likes">
                       <a href="/post/likePost/<%= posts[i]._id%>"><i class="fa-solid fa-heart"></i></a> <span
                         class="screenPostLikes">
-                        <%=posts[i].likes.length %>
+                        <%=posts[i].likes %>
                       </span>
                     </section>
                   </section>

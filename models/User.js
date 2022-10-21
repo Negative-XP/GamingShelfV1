@@ -4,6 +4,8 @@ const mongoose = require('mongoose') //Declares that we need to use Mongoose
 const UserSchema = new mongoose.Schema({ //Declares a new schema user object
   userName: { type: String, unique: true }, //declares that it will have an username that is a string that is unique
   email: { type: String, unique: true }, //declares that it will have an email that is a string that is unique
+  followedGames:[],
+  followedUsers:[],
   password: String //Declares that it will need a password
 })
 

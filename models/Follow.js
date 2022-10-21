@@ -2,10 +2,8 @@ const mongoose = require("mongoose");
 
 const followSchema = new mongoose.Schema({
 
-  gameId:{
-    type: String,
-    require: true,
-  },
+  followedGames:[],
+  followedUsers:[],
   id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
