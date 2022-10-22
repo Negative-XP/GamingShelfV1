@@ -101,6 +101,13 @@ span, p{
   justify-content: space-between;
   align-items: center;
 }
+.logIn{
+  text-align: center;
+  width: 100%;
+  justify-content: center;
+}
+
+
 
 /* Header Styles */
 header {

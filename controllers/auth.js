@@ -31,7 +31,7 @@ const User = require('../models/User') //Declares the path
       req.logIn(user, (err) => {
         if (err) { return next(err) }
         req.flash('success', { msg: 'Success! You are logged in.' }) //If it's a success, it pushes our msg
-        res.redirect(req.session.returnTo || '/dashboard') //If it is a success, renders the todos.ejs
+        res.redirect(req.session.returnTo || '/feed') //If it is a success, renders the todos.ejs
       })
     })(req, res, next)
   }
@@ -89,7 +89,7 @@ const User = require('../models/User') //Declares the path
           if (err) {
             return next(err) //Return errors if there are any 
           }
-          res.redirect('/dashboard') //Sends you to the todos page
+          res.redirect('/feed') //Sends you to the todos page
         })
       })
     })
