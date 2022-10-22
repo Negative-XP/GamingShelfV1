@@ -11,11 +11,8 @@ router.get('/searchAPI', searchController.getResults);//shows the path to the co
 
 router.get('/game/:id',searchController.game)
 
-router.put('/markComplete', searchController.markComplete); //Sends a put request to update an item, using the controller, to send to database
 
-router.put('/markIncomplete', searchController.markIncomplete); //Sends a put request to update an item, using the controller, to send to database
 
-router.delete('/deleteTodo', searchController.deleteTodo); //Sends a delete request to remove a todo item, using the controller, to send to database
 
 
 

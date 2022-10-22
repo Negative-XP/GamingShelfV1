@@ -10,7 +10,7 @@ module.exports = {
       const id = req.user.id
       let posts = []
       let tempPosts = []
-     await Promise.all(req.user.followedGames.map(async x => {
+     await Promise.all([...new Set(req.user.followedGames)].map(async x => {
         tempPosts = await Post.find({gameId: x}).sort({ createdAt: "desc" }).lean()
         tempPosts.forEach(post => {
     
@@ -30,11 +30,20 @@ module.exports = {
   },
   createFollow: async (req, res, next) => {
     try { 
-        console.log(req)
-      await User.updateOne({
+        console.log(req.user.id)
+      await User.updateOne(
+        {
+          _id: req.user.id,
+        },{
+       
         $push: {followedGames: req.params.id},
+       
       });
       console.log("Following");
+      
+        //
+  
+     
       res.redirect('back');
     } catch (err) {
       console.log(err);

@@ -17,23 +17,8 @@
 </head>
 
 <body>
-  <header>
-    <section class="headerWrapper">
-      <a href="/user/myProfile" class="userIcon">
-        <i class="fa-solid fa-circle-user userIcon"></i>
-      </a>
-      <a href="/dashboard">
-        <h1>Gaming Shelf</h1>
-      </a>
-    
-        <form action="/dashboard/searchAPI" method="get" class="searchBar">
-          <input class="movieName" type="text" placeholder="Game Name" name="userSearch" /><br>
-          <input type="submit" class="movieSubmit" />
-        </form>
-     
-      <span class="logout"><a href="/logout">Logout</a></span>
-    </section>
-  </header>
+  <%- include("../partials/header") %> 
+  
   <section class="postWrapper">
     <section class="postView rnd z-depth-3">
       <div class="postViewUserName">
