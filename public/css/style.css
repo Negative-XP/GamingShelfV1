@@ -596,6 +596,9 @@ header{
   float: left;
 }
 
+.submitSectionFit{
+  height: auto;
+}
 
 .formSubmit{
   height: 300px;
