@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
  
  <header>
@@ -16,4 +16,57 @@
      
       <span class="logout"><a href="/logout">Logout</a></span>
     </section>
-  </header>
+
+   
+
+
+
+  </header> -->
+
+
+
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <script>
+      <!-- this part is important! -->
+      $(document).ready(function () {
+        $(".button-collapse").sideNav();
+      });
+    </script>
+</head>
+<body>
+   <div class="navbar-fixed">
+      <nav class="header">
+          <div class="nav-wrapper ">
+             <a href="/feed/0" class="brand-logo">Gaming Shelf</a>
+             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+             <ul class="right hide-on-med-and-down">
+                <li><form action="/dashboard/searchAPI" method="get" class="searchBar">
+                  <input class="movieName" type="text" placeholder="Game Name" name="userSearch" /><br>
+                  <button type="submit" class="searchBtn btn btn-primary rnd" value="Upload"><i class="fa-solid fa-magnifying-glass"></i></button>        </form></li>
+                <li> <a href="/user/myProfile" class="userIcon">
+                  <i class="fa-solid fa-circle-user userIcon"></i>
+                </a></li>
+                <li><a href="/logout">Logout</a></li>
+           
+            </ul>
+         </div>
+      </nav>
+   </div>
+   <ul class="side-nav" id="mobile-demo">
+    <li><form action="/dashboard/searchAPI" method="get" class="searchBar">
+      <input class="movieName" type="text" placeholder="Game Name" name="userSearch" /><br>
+      <button type="submit" class="btn btn-primary rnd" value="Upload"><i class="fa-solid fa-magnifying-glass"></i></button>        </form></li>
+        <li> <a href="/user/myProfile" class="userIcon">
+          <i class="fa-solid fa-circle-user userIcon"></i>
+        </a></li>
+        <li><a class="logOutM" href="/logout">Logout</a></li>
+      
+        
+  </ul>
+</body>

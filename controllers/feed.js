@@ -9,6 +9,7 @@ module.exports = {
    Number(req.params.Incr) == 0 ? page = 0 : page += Number(req.params.Incr)
    page < 0 ? page = 0 : page = page
     try {
+      let isChunked = false
       let test = req
       const id = req.user.id
       let posts = []
@@ -38,13 +39,13 @@ return 0;
         
         for (let i = 0; i < posts.length; i += 9) {
           chunk.push(posts.slice(i, i + 9))
-          // do whatever
+          isChunked = true
       }
       page < 0 ? page = 0 : page > chunk.length ? page = chunk.length-1 : page = page
       }
       console.log(page)
-      
-      res.render("feed.ejs", { posts: chunk, user: req.user, pageVal: page, length: chunk.length });
+      if(isChunked == false){chunk = posts}
+      res.render("feed.ejs", { posts: chunk, user: req.user, pageVal: page, length: chunk.length, chunked: isChunked, });
     } catch (err) {
       console.log(err);
     }

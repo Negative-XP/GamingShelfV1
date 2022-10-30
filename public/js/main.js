@@ -12,7 +12,22 @@ Array.from(todoItem).forEach((el) => {
 
 Array.from(todoComplete).forEach((el) => {
   el.addEventListener('click', markIncomplete);
+
 });
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems, options);
+});
+
+
+
+
+
 
 
 async function deleteTodo() {
@@ -32,6 +47,8 @@ async function deleteTodo() {
     console.log(err);
   }
 }
+
+
 
 async function markComplete() {
   const todoId = this.parentNode.dataset.id;
@@ -68,6 +85,19 @@ async function markIncomplete() {
     console.log(err);
   }
 }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = Sidenav.init(elems, options);
+});
+
+// Or with jQuery
+
+
+
+
+
 
 // API
 // const movieSearch = document.querySelector('.movieSubmit');

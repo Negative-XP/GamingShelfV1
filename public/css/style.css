@@ -17,13 +17,14 @@ body {
 
 h1 {
   color: white;
-  font-size: 2em;
+  font-size: 2em !important;
   margin: 0;
+  text-align: center;
 }
 
 h2 {
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.4rem !important;
 }
 
 a:link {
@@ -54,14 +55,22 @@ a:active {
 input:focus {
   border-bottom: 1px solid purple !important;
   box-shadow: 0 1px 0 0 purple !important;
+  height: 300%;
 }
 
 button:hover{
   background-color: #9224A8 !important;
+  height: 300%;
 }
 
 button{
   background-color: #661976 !important;
+  height: 300% !important;
+}
+.side-nav{
+ background-color: #48444a !important;
+ color: white;
+ display: block;
 }
 
 ul,
@@ -110,12 +119,13 @@ span, p{
 
 
 /* Header Styles */
-header {
-  background-color: rgb(31, 31, 37);
-  height: 5rem;
+.header {
+  background-color: rgb(31, 31, 37) !important;
+
   width: 100%;
-  text-align: center;
+
   margin: 0% 0% .25% 0%;
+  padding: 0% 5%;
 }
 
 .centerIndex {
@@ -139,7 +149,7 @@ header {
 .userIcon{
  
   
-  font-size: 2em;
+  font-size: 1.25em;
 }
 
 /* Form Styles */
@@ -161,11 +171,22 @@ input {
 
 .pages{
   width: 100%;
-  background-color: green;
+  
   text-align: center;
 }
 
+.feedBtns{
+  
+  
+  justify-content: center;
+  width: auto;
+  color: green;
+  margin: auto;
+}
 
+.feedBtns a{
+  
+}
 
 /* Search Dashboard */
 .searchResults {
@@ -220,9 +241,11 @@ img {
   width: 100%;
   text-align: center;
 }
-
+.searchBtn{
+  height: 400px;
+}
 .searchBar {
-  width: 30%;
+  width: 100%;
   
   float: left;
   display: flex;
@@ -575,6 +598,24 @@ header{
   margin: auto;
   text-align: center;
 }
+.brand-logo{
+  font-size: 1.5em !important;
+}
+
+.side-nav{
+  padding: 7%;
+}
+.userIcon{
+
+  font-size: 5em;
+  width: auto;
+  margin:25% 0% 10% 0%;
+}
+.logOutM{
+  display: block;
+  color: white;
+}
+
 .titleWrapper, .imageWrapper{
   text-align: center;
   padding: none;

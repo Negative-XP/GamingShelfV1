@@ -11,6 +11,7 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="/css/style.css" />
+  <link rel="text/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
   
 </head>
 
@@ -27,6 +28,7 @@
 
         <% if(posts.length==0){ %>
           <section class="gPostHeader gNoPosts rnd">
+            <%console.log(posts)%>
             <p>Looks like there isn't any activity... <br> Add your own posts!</p>
           </section>
           <% }else{ %>
@@ -35,7 +37,7 @@
 
             <% } %>
          
-            <% posts = posts[Number(pageVal)] %> 
+            <% chunked == true ? posts = posts[Number(pageVal)] : posts = posts%> 
               <% for(var i=0; i<posts.length; i++) {%>
 
                 <section class="screenPost rnd z-depth-3">
@@ -77,8 +79,8 @@
 
   </section>
   <section class="pages">
-    <% if(pageVal > 0){ %> <a href="/feed/<%= -1 %>"><</a><% } %> 
-    <% if(pageVal != length -1){ %> <a href="/feed/<%= 1 %>">></a><% } %> 
+    <section class="feedBtns rnd"><% if(pageVal > 0){ %> <a href="/feed/<%= -1 %>"><</a><% } %>
+    <% if(pageVal != length -1){ %> <a href="/feed/<%= 1 %>">></a><% } %> </section>
   </section> 
   <script src="/js/main.js"></script>
 </body>
