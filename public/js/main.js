@@ -15,7 +15,6 @@ Array.from(todoComplete).forEach((el) => {
 });
 
 
-
 async function deleteTodo() {
   const todoId = this.parentNode.dataset.id;
   try {

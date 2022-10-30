@@ -159,6 +159,11 @@ input {
   justify-content: center;
 }
 
+.pages{
+  width: 100%;
+  background-color: green;
+  text-align: center;
+}
 
 
 
@@ -376,6 +381,7 @@ img {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  width: 100%;
 }
 
 .follow{
@@ -537,6 +543,8 @@ overflow-y:auto;
 
   
 }
+
+
 
 
 /* mobile */

@@ -21,11 +21,11 @@ router.use( function( req, res, next ) {
 
 
 
-router.get("/", ensureAuth, feedController.getFeed);
+router.get("/:Incr", ensureAuth, feedController.getFeed);
 
 router.post("/follow/:id", feedController.createFollow);
 
-
+router.get('/feedForward', feedController.feedForward)
 
 
 

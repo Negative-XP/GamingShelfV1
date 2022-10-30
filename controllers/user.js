@@ -9,8 +9,15 @@ module.exports = {
       console.log(req.user); //Console logs the user
       
       try {
-        const posts = await Post.find({ user: req.user.id });
-
+        let posts = await Post.find({ user: req.user.id });
+        posts = posts.sort((a,b) => {
+          var keyA = new Date(a.createdAt),
+    keyB = new Date(b.createdAt);
+  // Compare the 2 dates
+  if (keyA < keyB) return -1;
+  if (keyA > keyB) return 1;
+  return 0;
+        })
         //Find all of items in the database that aren't completed that match the user id
         res.render('user.ejs', {
           user: req.user,

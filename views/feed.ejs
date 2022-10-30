@@ -17,12 +17,12 @@
 <body>
   <%- include("../partials/header") %> 
   
-  <section class="wrapper">
+  <section class="postViewImgWrapper">
     
       
 
    
-    <section class="searchResults feedPosts">
+    <section class="gPostsProfileView">
 
 
         <% if(posts.length==0){ %>
@@ -34,6 +34,8 @@
            
 
             <% } %>
+         
+            <% posts = posts[Number(pageVal)] %> 
               <% for(var i=0; i<posts.length; i++) {%>
 
                 <section class="screenPost rnd z-depth-3">
@@ -63,7 +65,7 @@
                     <section class="likes">
                       <a href="/post/likePost/<%= posts[i]._id%>"><i class="fa-solid fa-heart"></i></a> <span
                         class="screenPostLikes">
-                        <%=posts[i].likes.length %>
+                        <!-- <%=posts[i].likes.length%> -->
                       </span>
                     </section>
                   </section>
@@ -71,8 +73,13 @@
                 <% } %>
 
       </section>
+      
 
   </section>
+  <section class="pages">
+    <% if(pageVal > 0){ %> <a href="/feed/<%= -1 %>"><</a><% } %> 
+    <% if(pageVal != length -1){ %> <a href="/feed/<%= 1 %>">></a><% } %> 
+  </section> 
   <script src="/js/main.js"></script>
 </body>
 

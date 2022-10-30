@@ -5,7 +5,15 @@ const Comment = require("../models/comments")
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const posts = await Post.find({ user: req.user.id });
+      let posts = await Post.find({ user: req.user.id });
+      posts = posts.sort((a, b) => {
+        var keyA = new Date(a.createdAt),
+          keyB = new Date(b.createdAt);
+        // Compare the 2 dates
+        if (keyA < keyB) return -1;
+        if (keyA > keyB) return 1;
+        return 0;
+      })
       res.render("profile.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
@@ -22,7 +30,7 @@ module.exports = {
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
-      const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
+      const comments = await Comment.find({ post: req.params.id }).sort({ createdAt: "desc" }).lean();
       res.render("post.ejs", { post: post, user: req.user, comments: comments });
     } catch (err) {
       console.log(err);
@@ -30,7 +38,7 @@ module.exports = {
   },
   createComment: async (req, res) => {
     try {
-        console.log(req)
+      console.log(req)
       await Comment.create({
         comment: req.body.comment,
         likes: 0,
@@ -71,8 +79,8 @@ module.exports = {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
         {
-        
-        $push: {'likes': req.user.id}, 
+
+          $push: { 'likes': req.user.id },
         }
       );
       console.log("Likes +1");
