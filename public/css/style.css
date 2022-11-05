@@ -163,6 +163,8 @@ input {
   text-align: center;
   font-size: medium;
   color: white;
+  box-sizing: border-box;
+
 }
 /* FEED */
 .feedPosts{
@@ -234,6 +236,11 @@ img {
   border: solid 1px rgb(47, 47, 54);
   border-radius: 5%;
   flex-direction: column;
+  box-sizing: border-box;
+}
+
+.Panel input{
+  max-height: 20px;
 }
 
 
