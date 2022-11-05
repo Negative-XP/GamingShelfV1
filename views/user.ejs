@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/bbc193bfe3.js" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
      <link rel="stylesheet" href="/css/style.css" />
-             
+    
   </head>
   <body>
     <%- include("../partials/header") %> 
@@ -55,15 +55,23 @@
                     <section class="screenPostBottom">
                       <section class="screenPostCap">
                         <span>
-                          <%=posts[i].caption %>
+                          <%= posts[i].caption.length > 90 ? posts[i].caption.slice(0,90) + '...' : posts[i].caption %>
+
                         </span>
                       </section>
-                      <section class="likes">
-                        <a href="/post/likePost/<%= posts[i]._id%>"><i class="fa-solid fa-heart"></i></a> <span
-                          class="screenPostLikes">
-                          <!-- <%=posts[i].likes.length%> -->
-                        </span>
-                      </section>
+                      <section class="likes"> 
+                        <% if(user._id.toString() == posts[i].user){ %>
+                          <a href="/post/delete/<%= posts[i]._id%>"><i class="fa-solid fa-trash-can"></i>
+                         <% }else{ %>
+                         
+                            <a href="/post/likePost/<%= posts[i]._id%>"><i class="fa-solid fa-heart"></i></a> <span
+                              class="screenPostLikes">
+                            <%=posts[i].likes.length%> 
+                            </span>
+                         
+              
+                          <% } %> 
+                        </section> 
                     </section>
                   </section>
                   <% } %>
