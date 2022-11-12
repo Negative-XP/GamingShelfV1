@@ -10,7 +10,7 @@ router.post("/createPost/:id", upload.single("file"), postsController.createPost
 
 router.get("/likePost/:id", postsController.likePost);
 
-router.get("/delete/:id", postsController.deletePost);
+router.delete("/delete/:id", postsController.deletePost);
 
 router.post("/createComment/:id", postsController.createComment);
 

@@ -80,7 +80,7 @@
   </section>
   <section class="pages">
     <section class="feedBtns rnd"><% if(pageVal > 0){ %> <a href="/feed/<%= -1 %>"><</a><% } %>
-    <% if(pageVal != length -1){ %> <a href="/feed/<%= 1 %>">></a><% } %> </section>
+    <% if(chunked == true){ %> <a href="/feed/<%= 1 %>">></a><% } %> </section>
   </section> 
   <script src="/js/main.js"></script>
 </body>
