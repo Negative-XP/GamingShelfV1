@@ -6,7 +6,7 @@ const Post = require("../models/Post");
 module.exports = {
    myProfile: async (req, res) => {
       //getTodos async function
-      console.log(req.user); //Console logs the user
+     
       
       try {
         let posts = await Post.find({ user: req.user.id });
@@ -30,7 +30,7 @@ module.exports = {
    
     userProfile: async (req, res) => {
       //getTodos async function
-      console.log(req.user); //Console logs the user
+    
       
       try {
         const posts = await Post.find({ user: req.params.id });
@@ -63,7 +63,7 @@ module.exports = {
             data: `search "${title}";` + "fields name, id, platforms.*, artworks.*, cover.*, screenshots.*, summary; limit 19;",
           })
           .then((response) => {
-            console.log(id)
+          
                       res.render(`game.ejs`, { games: response.data.filter(x => x.id == id),  user: req.user, id: id});
                       
                     })

@@ -80,7 +80,7 @@ module.exports = {
                   })
                 .catch((err) => {
                     console.error(err)
-                    console.log(title)
+             
                 })
 },  
 //   const resCover = await axios({
