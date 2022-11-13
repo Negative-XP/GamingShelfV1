@@ -4,7 +4,7 @@ const User = require('../models/User') //Declares the path
 
  exports.getLogin = (req, res) => { //Getting a request to login
     if (req.user) {
-      return res.redirect('/dashboard') //If the login exists, redirect the user to the login page
+      return res.redirect('/feed/0') //If the login exists, redirect the user to the login page
     }
     res.render('login', { //If there isn't a matching login, sends them back to the login page
       title: 'Login' //
