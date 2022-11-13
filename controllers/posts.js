@@ -64,6 +64,7 @@ module.exports = {
       res.redirect('back');
     } catch (err) {
       console.log(err);
+      console.log(result)
     }
   },
   likePost: async (req, res) => {
