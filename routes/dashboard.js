@@ -6,14 +6,9 @@ const { ensureAuth } = require('../middleware/auth'); //Shows the path to the au
 router.get('/', ensureAuth, searchController.getDashboard); //Shows the path to the controller to load todos, requires Auth to login
 
 router.get('/searchAPI', searchController.getResults);//shows the path to the controller to fetch the API results.
-// router.post(`/searchDatabase`, searchController.searchDatabase)
 
 
 router.get('/game/:id',searchController.game)
-
-
-
-
 
 
 module.exports = router; //Callback functions, allows us to use this file

@@ -1,94 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= posts.userName == undefined ? user.userName : false %></title>
-    <script src="https://kit.fontawesome.com/bbc193bfe3.js" crossorigin="anonymous"></script>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-     <link rel="stylesheet" href="/css/style.css" />
-    
-  </head>
-  <body>
-    <%- include("../partials/header") %> 
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= posts.userName==undefined ? user.userName : false %>
+  </title>
+  <script src="https://kit.fontawesome.com/bbc193bfe3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/style.css" />
+
+</head>
+
+<body>
+  <%- include("../partials/header") %>
 
     <section class="postViewImgWrapper">
-    
-      
 
-   
+
+
+
       <section class="gPostsProfileView">
-  
-  
-          <% if(posts.length==0){ %>
-            <section class="gPostHeader gNoPosts rnd">
-              <p>Looks like there isn't any activity... <br> Add your own posts!</p>
-            </section>
-            <% }else{ %>
-  
-             
-  
-              <% } %>
-           
-              
-                <% for(var i=0; i<posts.length; i++) {%>
-  
-                  <section class="screenPost rnd z-depth-3">
-                    <section class="screenPostUser rnd">
-  
-                      <a href="/user/<%= posts[i].user %>">
-                        <P class="screenPostUser rnd">
-                          <%= posts[i].userName%>
-                        </P>
-                      </a>
-                    </section>
-                    <a href="/post/<%= posts[i]._id%>">
-  
-                      <p class="screenPostCap">
-                        <%= posts[i].title %>
-  
-                      </p>
-  
-                      <section class="screenPostImg"><img class="img-fluid" src="<%= posts[i].image%>"></section>
-                    </a>
-                    <section class="screenPostBottom">
-                      <section class="screenPostCap">
-                        <span>
-                          <%= posts[i].caption.length > 90 ? posts[i].caption.slice(0,90) + '...' : posts[i].caption %>
 
-                        </span>
-                      </section>
-                      <section class="likes"> 
-                        <% if(user._id.toString() == posts[i].user){ %>
-                          <a href="/post/delete/<%= posts[i]._id%>?_method=DELETE" method="DELETE" methodOverride="DELETE"><i class="fa-solid fa-trash-can"></i>
-                         <% }else{ %>
-                         
+
+        <% if(posts.length==0){ %>
+          <section class="gPostHeader gNoPosts rnd">
+            <p>Looks like there isn't any activity... <br> Add your own posts!</p>
+          </section>
+          <% }else{ %>
+
+
+
+            <% } %>
+
+
+              <% for(var i=0; i<posts.length; i++) {%>
+
+                <section class="screenPost rnd z-depth-3">
+                  <section class="screenPostUser rnd">
+
+                    <a href="/user/<%= posts[i].user %>">
+                      <P class="screenPostUser rnd">
+                        <%= posts[i].userName%>
+                      </P>
+                    </a>
+                  </section>
+                  <a href="/post/<%= posts[i]._id%>">
+
+                    <p class="screenPostCap">
+                      <%= posts[i].title %>
+
+                    </p>
+
+                    <section class="screenPostImg"><img class="img-fluid" src="<%= posts[i].image%>"></section>
+                  </a>
+                  <section class="screenPostBottom">
+                    <section class="screenPostCap">
+                      <span>
+                        <%= posts[i].caption.length> 90 ? posts[i].caption.slice(0,90) + '...' : posts[i].caption %>
+
+                      </span>
+                    </section>
+                    <section class="likes">
+                      <% if(user._id.toString()==posts[i].user){ %>
+                        <a href="/post/delete/<%= posts[i]._id%>?_method=DELETE" method="DELETE"
+                          methodOverride="DELETE"><i class="fa-solid fa-trash-can"></i>
+                          <% }else{ %>
+
                             <a href="/post/likePost/<%= posts[i]._id%>"><i class="fa-solid fa-heart"></i></a> <span
                               class="screenPostLikes">
-                            <%=posts[i].likes.length%> 
+                              <%=posts[i].likes.length%>
                             </span>
-                         
-              
-                          <% } %> 
-                        </section> 
+
+
+                            <% } %>
                     </section>
                   </section>
-                  <% } %>
-  
-        </section>
-        
-  
+                </section>
+                <% } %>
+
+      </section>
+
+
     </section>
 
-</section>
+    </section>
 
 
-  </section>
-</section>
+    </section>
+    </section>
 
-    
-   
+
+
     <script src="/js/main.js"></script>
-  </body>
+</body>
+
 </html>

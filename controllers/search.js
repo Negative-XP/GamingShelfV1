@@ -14,110 +14,73 @@ module.exports = {
       const itemsLeft = await Todo.countDocuments({
         userId: req.user.id,
         completed: false,
-      }); 
+      });
 
       //Find all of items in the database that aren't completed that match the user id
       res.render('dashboard.ejs', {
         user: req.user,
-        games:  [] ,
+        games: [],
         todos: todoItems,
       }); //Renders all the todoItems, all the items that are marked incomplete, and the users name
     } catch (err) {
       console.log(err); //If there is an error, return the error
     }
   },
- 
- 
-    getResults: async (req, res, resCover) => {
-      // console.log(req)
-      const title = req.query.userSearch
-      // console.log('response', req.query.userSearch)
-     const response = await axios({
+
+
+  getResults: async (req, res, resCover) => {
+
+    const title = req.query.userSearch
+
+    const response = await axios({
       method: "POST",
       url: "https://api.igdb.com/v4/games",
-     headers: {
-                Accept: "application/json",
-                "Client-ID": `${process.env.id}`,
-                "Authorization": `${process.env.accessToken}`,
-            },
-            
-            data: `search "${title}";` + "fields id, category, name, cover.*, artworks, summary, screenshots.url; where category = (0); limit 18; ",
-          })
-          .then((response) => {
-            response.data.forEach(n => console.log(n))
-                      res.render(`dashboard.ejs`, { games: response.data,  user: req.user, images: response.data.screenshots });
-                      
-                    })
-                  .catch((err) => {
-                      console.error(err)
-                      console.log(title)
-                  })
-  },  
+      headers: {
+        Accept: "application/json",
+        "Client-ID": `${process.env.id}`,
+        "Authorization": `${process.env.accessToken}`,
+      },
+
+      data: `search "${title}";` + "fields id, category, name, cover.*, artworks, summary, screenshots.url; where category = (0); limit 18; ",
+    })
+      .then((response) => {
+        response.data.forEach(n => console.log(n))
+        res.render(`dashboard.ejs`, { games: response.data, user: req.user, images: response.data.screenshots });
+
+      })
+      .catch((err) => {
+        console.error(err)
+        console.log(title)
+      })
+  },
 
 
   game: async (req, res, resCover) => {
-    // console.log(req)
     const id = req.params.id.split(',')[1]
     const title = req.params.id.split(',')[0]
-   console.log('response', req.params.id)
+    console.log('response', req.params.id)
 
-    const posts = await Post.find({gameId: id}).sort({ createdAt: "desc" }).lean();
-   const response = await axios({
-    method: "POST",
-    url: "https://api.igdb.com/v4/games",
-   headers: {
-              Accept: "application/json",
-              "Client-ID": `${process.env.id}`,
-              "Authorization": `${process.env.accessToken}`,
-          },
-          
-          data: `search "${title}";` + "fields name, id, platforms.*, artworks.*, cover.*, screenshots.*, summary; limit 19;",
-        })
-        .then((response) => {
-     
-                    res.render(`game.ejs`, {games: response.data.filter(x => x.id == id),  user: req.user, id: id,posts: posts});
-  
-                  })
-                .catch((err) => {
-                    console.error(err)
-             
-                })
-},  
-//   const resCover = await axios({
-//     method: "POST",
-//     url: "https://api.igdb.com/v4/covers",
-//    headers: {
-//               Accept: "application/json",
-//               "Client-ID": `${process.env.id}`,
-//               "Authorization": `${process.env.accessToken}`,
-//           },
-//           data: "fields game, cover, summary, url;",
-// )
-  // getResults: async(req, res) => {
-  //   const userSearch = req.query.userSearch
-  //   axios({
-  //       url: "https://api.igdb.com/v4/games",
-  //       method: "POST",
-        
-  //       headers: {
-  //           Accept: "application/json",
-  //           "Client-ID": `${process.env.id}`,
-  //           Authorization: `Bearer ${process.env.access_token}`,
-  //       },
-  //       data: `search=${userSearch}` + "fields name, cover.url, summary;",
-  //   })
-  //       .then((response) => {
-  //           console.log(response.data);
-  //           res.render(`dashboard.ejs`, { games: response.data });
-  //       })
-  //       .catch((err) => {
-  //           console.error(err);
-  //       });
+    const posts = await Post.find({ gameId: id }).sort({ createdAt: "desc" }).lean();
+    const response = await axios({
+      method: "POST",
+      url: "https://api.igdb.com/v4/games",
+      headers: {
+        Accept: "application/json",
+        "Client-ID": `${process.env.id}`,
+        "Authorization": `${process.env.accessToken}`,
+      },
 
-//
-//
-  
-  
-  
-  
+      data: `search "${title}";` + "fields name, id, platforms.*, artworks.*, cover.*, screenshots.*, summary; limit 19;",
+    })
+      .then((response) => {
+
+        res.render(`game.ejs`, { games: response.data.filter(x => x.id == id), user: req.user, id: id, posts: posts });
+
+      })
+      .catch((err) => {
+        console.error(err)
+
+      })
+  },
+
 };

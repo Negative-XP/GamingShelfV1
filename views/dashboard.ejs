@@ -1,47 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <script
+      src="https://kit.fontawesome.com/bbc193bfe3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
-  <script src="https://kit.fontawesome.com/bbc193bfe3.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/css/style.css" />
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="/css/style.css" />
-
-</head>
-
-<body>
-  <%- include("../partials/header") %> 
-
-  
-  <section class="wrapper">
-   
-
-   
-    <section class="searchResults">
-      <% games.forEach( el=> { %>
+  <body>
+    <%- include("../partials/header") %> =
+    <section class="wrapper">
+      <section class="searchResults">
+        <% games.forEach( el=> { %>
         <section data-id="<%=el.id%>">
           <section class="dCard">
-            <section class="searchImage ">
-              <a href="/dashboard/game/<%=[el.name, el.id]%>" method="get"><img class="mPoster z-depth-3"
-                  src=<%=`https://images.igdb.com/igdb/image/upload/t_cover_big/${el.cover==undefined ? el.cover='/null'
-                  : el.cover.image_id}.png`%> ></a>
+            <section class="searchImage">
+              <a href="/dashboard/game/<%=[el.name, el.id]%>" method="get"
+                ><img class="mPoster z-depth-3"
+                src=<%=`https://images.igdb.com/igdb/image/upload/t_cover_big/${el.cover==undefined
+                ? el.cover='/null' : el.cover.image_id}.png`%> ></a
+              >
             </section>
             <span class="mName">
               <%= el.name.length> 20 ? el.name.slice(0,32) + '...' : el.name %>
             </span>
-
           </section>
         </section>
         <% }) %>
+      </section>
     </section>
-
-  </section>
-  <script src="/js/main.js"></script>
-</body>
-
+    <script src="/js/main.js"></script>
+  </body>
 </html>

@@ -17,67 +17,74 @@
 </head>
 
 <body>
-  <%- include("../partials/header") %> 
-  
-  <section class="postWrapper">
-    <section class="postView rnd z-depth-3">
-      <div class="postViewUserName">
-        <span>
-          <a href="/user/<%= post.user %>"><%= post.userName %></a>
-        </span>
-        <p class="postViewTitle b">
-          <%= post.title %>
-        </p>
-      </div>
+  <%- include("../partials/header") %>
 
-      <section class="postViewImgWrapper b">
-        <img class="postViewImg b" src="<%= post.image%>" />
-      </section>
-      <div class="postViewUserName">
-        <section class="screenPostBottom">
-          <section class="screenPostCap">
-            <span>
-              <%=post.caption %>
-            </span>
-          </section>
-          <section class="likes">
-            <a href="/post/likePost/<%= post._id%>"><i class="fa-solid fa-heart"></i></a> <span class="screenPostLikes">
-              <%=post.likes.length%>
-            </span>
-          </section>
+    <section class="postWrapper">
+      <section class="postView rnd z-depth-3">
+        <div class="postViewUserName">
+          <span>
+            <a href="/user/<%= post.user %>">
+              <%= post.userName %>
+            </a>
+          </span>
+          <p class="postViewTitle b">
+            <%= post.title %>
+          </p>
+        </div>
+
+        <section class="postViewImgWrapper b">
+          <img class="postViewImg b" src="<%= post.image%>" />
         </section>
-      </div>
-    </section>
+        <div class="postViewUserName">
+          <section class="screenPostBottom">
+            <section class="screenPostCap">
+              <span>
+                <%=post.caption %>
+              </span>
+            </section>
+            <section class="likes">
+              <a href="/post/likePost/<%= post._id%>"><i class="fa-solid fa-heart"></i></a> <span
+                class="screenPostLikes">
+                <%=post.likes.length%>
+              </span>
+            </section>
+          </section>
+        </div>
+      </section>
 
-    <section class="postViewComments rnd center">
-      <h1>COMMENTS</h1>
-      <div class="mt-5">
-        <h2>Add a Comment</h2>
-        <form action="/post/createComment/<%=post._id%>" method="POST">
-          <div class="mb-3">
+      <section class="postViewComments rnd center">
+        <h1>COMMENTS</h1>
+        <div class="mt-5">
+          <h2>Add a Comment</h2>
+          <form action="/post/createComment/<%=post._id%>" method="POST">
+            <div class="mb-3">
               <label for="comment" class="form-label">Comment</label>
               <input type="text" class="form-control" id="comment" name="comment">
-          </div>
-          <button type="submit" class="btn btn-primary" >Submit</button>
-        </form>
-      </div>
-      <ul class="row list-unstyled">
-        <% for(var i=0; i<comments.length; i++) {%>
-          <li class="justify-content-left mt-5">
-            <div class="comment rnd z-depth-3">
-            <div class="commentHeader rnd"><span><%= comments[i].user %></span></div>
-           <p><%= comments[i].comment %> </p>
             </div>
-          </li>
-        <% } %>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <ul class="row list-unstyled">
+          <% for(var i=0; i<comments.length; i++) {%>
+            <li class="justify-content-left mt-5">
+              <div class="comment rnd z-depth-3">
+                <div class="commentHeader rnd"><span>
+                    <%= comments[i].user %>
+                  </span></div>
+                <p>
+                  <%= comments[i].comment %>
+                </p>
+              </div>
+            </li>
+            <% } %>
         </ul>
-      
-    </div>
+
+        </div>
       </section>
     </section>
     </section>
-  </section>
-  
+    </section>
+
 </body>
 
 </html>
