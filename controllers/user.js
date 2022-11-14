@@ -47,7 +47,6 @@ module.exports = {
 
     const id = req.params.id.split(',')[1]
     const title = req.params.id.split(',')[0]
-    console.log('response', req.params.id)
     const response = await axios({
       method: "POST",
       url: "https://api.igdb.com/v4/games",

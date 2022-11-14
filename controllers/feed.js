@@ -80,7 +80,7 @@ module.exports = {
           // do whatever
         }
       }
-      chunk.forEach(x => console.log(x.length))
+   
       res.render("feed.ejs", { posts: chunk, user: req.user, pageVal: page });
     } catch (err) {
       console.log(err);
@@ -92,7 +92,7 @@ module.exports = {
 
   createFollow: async (req, res, next) => {
     try {
-      console.log(req.user.id)
+      
       await User.updateOne(
         {
           _id: req.user.id,

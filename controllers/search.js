@@ -8,7 +8,7 @@ const User = require('../models/User')
 module.exports = {
   getDashboard: async (req, res) => {
     //getTodos async function
-    console.log(req.user); //Console logs the user
+    
     try {
       const todoItems = await Todo.find({ userId: req.user.id }); //Attempts to find all todos that match the user ID
       const itemsLeft = await Todo.countDocuments({
@@ -44,7 +44,7 @@ module.exports = {
       data: `search "${title}";` + "fields id, category, name, cover.*, artworks, summary, screenshots.url; where category = (0); limit 18; ",
     })
       .then((response) => {
-        response.data.forEach(n => console.log(n))
+        // response.data.forEach(n => console.log(n)) //Console log each of the items found and their contents
         res.render(`dashboard.ejs`, { games: response.data, user: req.user, images: response.data.screenshots });
 
       })
@@ -58,7 +58,7 @@ module.exports = {
   game: async (req, res, resCover) => {
     const id = req.params.id.split(',')[1]
     const title = req.params.id.split(',')[0]
-    console.log('response', req.params.id)
+  
 
     const posts = await Post.find({ gameId: id }).sort({ createdAt: "desc" }).lean();
     const response = await axios({
