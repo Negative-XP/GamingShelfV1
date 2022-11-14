@@ -14,8 +14,6 @@ This started as a way for me to have an excuse to showcase some of my digital ph
 
 ## Optimizations
 
-Tried to minimize the amount of client side Javascript and handle as much on the backend as I could. Utilized CDNs for CSS instead of supplying bundled/minified my own for speed. Tried to optimize as much database interaction with trimming the fat on database objects and only using Javascript objects.
-
 Aside from the mobile versions hidden sliding menu, there is zero client side javascript! While materialize was used for the fancier animations, the majority of the website uses standardized local CSS coding. When the server communicates with MongoDB and cloudinary, everything is stored inside of a javascript object or an array.
 
 ## Lessons Learned:
