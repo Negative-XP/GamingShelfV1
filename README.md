@@ -4,7 +4,7 @@ This is a social media, similar to instagram, for video game photography. The pl
 
 **Link to project:** https://gamingshelf.cyclic.app/
 
-![Imgur](https://i.imgur.com/QKmv1Ej.gifv)
+![imgur](https://i.imgur.com/QKmv1Ej.gifv)
 
 ## How It's Made:
 
