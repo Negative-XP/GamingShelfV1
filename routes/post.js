@@ -6,7 +6,7 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 
 router.use( function( req, res, next ) {
-    // this middleware will call for each requested
+    // this middleware will call for each request
     // and we checked for the requested query properties
     // if _method was existed
     // then we know, clients need to call DELETE request instead
